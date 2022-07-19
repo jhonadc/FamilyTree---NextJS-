@@ -1,4 +1,22 @@
 /* This example requires Tailwind CSS v2.0+ */
+
+import prisma from '../lib/prisma';
+
+export const getStaticProps: GetStaticProps = async () => {
+  const feed = await prisma.album.findMany({
+    where: { published: true },
+    include: {
+      author: {
+        select: { name: true },
+      },
+    },
+  });
+  return {
+    props: { feed },
+    revalidate: 10,
+  };
+};
+
 export default function Home() {
   return (
     <div className='relative bg-indigo-800'>
