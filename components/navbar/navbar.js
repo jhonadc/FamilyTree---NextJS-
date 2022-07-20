@@ -67,7 +67,7 @@ export default function Navbar() {
         <div className='flex justify-between items-center max-w-7xl mx-auto px-4 py-6 sm:px-6 md:justify-start md:space-x-10 lg:px-8'>
           <div className='flex justify-start lg:w-0 lg:flex-1'>
             <a href='#'>
-              <span className='sr-only'>Workflow</span>
+              <span className='sr-only'>Family Tree</span>
               <img
                 className='h-8 w-auto sm:h-10'
                 src='https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg'
@@ -85,21 +85,6 @@ export default function Navbar() {
             <Popover className='relative'>
               {({ open }) => (
                 <>
-                  <Popover.Button
-                    className={classNames(
-                      open ? 'text-gray-900' : 'text-gray-500',
-                      'group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
-                    )}>
-                    <span>Solutions</span>
-                    <ChevronDownIcon
-                      className={classNames(
-                        open ? 'text-gray-600' : 'text-gray-400',
-                        'ml-2 h-5 w-5 group-hover:text-gray-500'
-                      )}
-                      aria-hidden='true'
-                    />
-                  </Popover.Button>
-
                   <Transition
                     as={Fragment}
                     enter='transition ease-out duration-200'
@@ -192,26 +177,9 @@ export default function Navbar() {
                     </Popover.Button>
                   </div>
                 </div>
-                <div className='mt-6'>
-                  <nav className='grid grid-cols-1 gap-7'>
-                    {solutions.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className='-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50'>
-                        <div className='flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-600 text-white'>
-                          <item.icon className='h-6 w-6' aria-hidden='true' />
-                        </div>
-                        <div className='ml-4 text-base font-medium text-gray-900'>
-                          {item.name}
-                        </div>
-                      </a>
-                    ))}
-                  </nav>
-                </div>
               </div>
               <div className='py-6 px-5'>
-                <div className='grid grid-cols-2 gap-4'>
+                <div className='grid grid-cols-1 gap-4'>
                   {navigation.map((item) => (
                     <Link href={item.href}>
                       <a
