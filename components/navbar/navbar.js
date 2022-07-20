@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Fragment } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import {
@@ -49,9 +50,10 @@ const solutions = [
 ];
 
 const navigation = [
-  { name: 'Pricing', href: '#' },
-  { name: 'Partners', href: '#' },
-  { name: 'Company', href: '#' },
+  { name: 'Home', href: '/' },
+  { name: 'Dashboard', href: '/dashboard' },
+  { name: 'Features', href: '/features' },
+  { name: 'About', href: '/about' },
 ];
 
 function classNames(...classes) {
@@ -139,25 +141,26 @@ export default function Navbar() {
             </Popover>
 
             {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className='text-base font-medium text-gray-500 hover:text-gray-900'>
-                {item.name}
-              </a>
+              <Link href={item.href}>
+                <a
+                  key={item.name}
+                  className='text-base font-medium text-gray-500 hover:text-gray-900'>
+                  {item.name}
+                </a>
+              </Link>
             ))}
           </Popover.Group>
           <div className='hidden md:flex items-center justify-end md:flex-1 lg:w-0'>
-            <a
-              href='#'
-              className='whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900'>
-              Sign in
-            </a>
-            <a
-              href='#'
-              className='ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700'>
-              Sign up
-            </a>
+            <Link href='/login'>
+              <a className='whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900'>
+                Sign in
+              </a>
+            </Link>
+            <Link href='/register'>
+              <a className='ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700'>
+                Sign up
+              </a>
+            </Link>
           </div>
         </div>
 
@@ -210,25 +213,26 @@ export default function Navbar() {
               <div className='py-6 px-5'>
                 <div className='grid grid-cols-2 gap-4'>
                   {navigation.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className='text-base font-medium text-gray-900 hover:text-gray-700'>
-                      {item.name}
-                    </a>
+                    <Link href={item.href}>
+                      <a
+                        key={item.name}
+                        className='text-base font-medium text-gray-900 hover:text-gray-700'>
+                        {item.name}
+                      </a>
+                    </Link>
                   ))}
                 </div>
                 <div className='mt-6'>
-                  <a
-                    href='#'
-                    className='w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700'>
-                    Sign up
-                  </a>
+                  <Link href='/register'>
+                    <a className='w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700'>
+                      Sign up
+                    </a>
+                  </Link>
                   <p className='mt-6 text-center text-base font-medium text-gray-500'>
                     Existing customer?
-                    <a href='#' className='text-gray-900'>
-                      Sign in
-                    </a>
+                    <Link href='/login'>
+                      <a className='text-gray-900'>Sign in</a>
+                    </Link>
                   </p>
                 </div>
               </div>

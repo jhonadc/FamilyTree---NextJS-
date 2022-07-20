@@ -1,19 +1,5 @@
-/*
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
+import Link from 'next/link'
+
 export default function Register() {
   return (
     <>
@@ -37,11 +23,11 @@ export default function Register() {
           </h2>
           <p className='mt-2 text-center text-sm text-gray-600'>
             Or{' '}
-            <a
-              href='#'
-              className='font-medium text-indigo-600 hover:text-indigo-500'>
-              Log-in to your account
-            </a>
+            <Link href='login'>
+              <a className='font-medium text-indigo-600 hover:text-indigo-500'>
+                Log-in to your account
+              </a>
+            </Link>
           </p>
         </div>
 

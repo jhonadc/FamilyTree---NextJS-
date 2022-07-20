@@ -1,19 +1,5 @@
-/*
-  This Login requires Tailwind CSS v2.0+ 
-  
-  This Login requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
+import Link from 'next/link';
+
 export default function Login() {
   return (
     <>
@@ -37,11 +23,13 @@ export default function Login() {
           </h2>
           <p className='mt-2 text-center text-sm text-gray-600'>
             Or{' '}
-            <a
-              href='#'
-              className='font-medium text-indigo-600 hover:text-indigo-500'>
-              Create an Account
-            </a>
+            <Link href='/register'>
+              <a
+                href='#'
+                className='font-medium text-indigo-600 hover:text-indigo-500'>
+                Create an Account
+              </a>
+            </Link>
           </p>
         </div>
 
@@ -100,11 +88,13 @@ export default function Login() {
                 </div>
 
                 <div className='text-sm'>
-                  <a
-                    href='#'
-                    className='font-medium text-indigo-600 hover:text-indigo-500'>
-                    Forgot your password?
-                  </a>
+                  <Link href='/forgotpassword'>
+                    <a
+                      href='#'
+                      className='font-medium text-indigo-600 hover:text-indigo-500'>
+                      Forgot your password?
+                    </a>
+                  </Link>
                 </div>
               </div>
 
