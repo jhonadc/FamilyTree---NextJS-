@@ -4,7 +4,8 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export const getStaticProps: GetStaticProps = async () => {
+{
+  /* export const getStaticProps: GetStaticProps = async () => {
   const albums = await prisma.album.findMany({
     where: { published: true },
     include: {
@@ -21,4 +22,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function Albums() {
   return <div></div>;
+}
+*/
 }

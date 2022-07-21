@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Loginoutbtn from './loginoutbtn';
+import Loginoutbtn from './navright';
 import { Fragment } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import {
@@ -10,6 +10,7 @@ import {
   QuestionMarkCircleIcon,
   XIcon,
 } from '@heroicons/react/outline';
+import Dropdown from './dropdown';
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -87,7 +88,7 @@ export default function Navbar() {
                   </div>
                 </div>
                 <div className='py-6 px-5'>
-                  <div className='grid grid-cols-1 gap-4'>
+                  <div className='grid grid-cols-3 align-center mx-2'>
                     {navigation.map((item) => (
                       <Link href={item.href}>
                         <a
@@ -98,24 +99,9 @@ export default function Navbar() {
                       </Link>
                     ))}
                   </div>
-                  <div className='mt-6'>
-                    <Link href='/register'>
-                      <a className='w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700'>
-                        Sign up
-                      </a>
-                    </Link>
-                    <p className='mt-6 text-center text-base font-medium text-gray-500'>
-                      Existing customer?
-                      <Link
-                        href='/login'
-                        Onclick={() =>
-                          signIn('github', {
-                            callbackUrl: 'http://localhost:3000/dashboard',
-                          })
-                        }>
-                        <a className='text-gray-900'>Sign in</a>
-                      </Link>
-                    </p>
+
+                  <div className='mt-6 grid'>
+                    <Loginoutbtn />
                   </div>
                 </div>
               </div>
