@@ -1,7 +1,6 @@
 //import Prisma from '../lib/prisma';
 //import { PrismaClient } from '@prisma/client';
-import { useSession, signIn, signOut } from 'next-auth/react';
-import Loginoutbtn from '../components/navbar/loginoutbutton';
+import { useSession } from 'next-auth/react';
 //const prisma = new PrismaClient();
 
 {
