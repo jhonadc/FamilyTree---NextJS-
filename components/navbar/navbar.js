@@ -1,16 +1,9 @@
 import Link from 'next/link';
-import Loginoutbtn from './navright';
+import Loginoutbtn from './loginoutbutton';
 import { Fragment } from 'react';
 import { Popover, Transition } from '@headlessui/react';
-import {
-  MenuIcon,
-  InboxIcon,
-  AnnotationIcon,
-  ChatAlt2Icon,
-  QuestionMarkCircleIcon,
-  XIcon,
-} from '@heroicons/react/outline';
-import Dropdown from './dropdown';
+import { MenuIcon, XIcon } from '@heroicons/react/outline';
+import Navright from './navright';
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -55,7 +48,7 @@ export default function Navbar() {
             ))}
           </Popover.Group>
           <div className='hidden md:flex items-center justify-end md:flex-1 lg:w-0'>
-            <Loginoutbtn />
+            <Navright />
           </div>
 
           <Transition
@@ -100,8 +93,10 @@ export default function Navbar() {
                     ))}
                   </div>
 
-                  <div className='mt-6 grid'>
-                    <Loginoutbtn />
+                  <div className='mt-6'>
+                    <>
+                      <Navright />
+                    </>
                   </div>
                 </div>
               </div>

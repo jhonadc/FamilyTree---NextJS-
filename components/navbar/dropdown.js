@@ -10,6 +10,7 @@ function classNames(...classes) {
 }
 
 export default function Dropdown() {
+  const { data: session } = useSession();
   return (
     <Menu as='div' className='relative inline-block text-left'>
       <div>
@@ -31,7 +32,7 @@ export default function Dropdown() {
           <div className='px-4 py-3'>
             <p className='text-sm'>Signed in as</p>
             <p className='text-sm font-medium text-gray-900 truncate'>
-              tom@example.com
+              {session.user.email}
             </p>
           </div>
           <div className='py-1'>
