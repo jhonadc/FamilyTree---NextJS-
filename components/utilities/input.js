@@ -14,7 +14,7 @@
   }
   ```
 */
-export default function Example() {
+export default function Input() {
   return (
     <div>
       <div className='flex justify-between'>
