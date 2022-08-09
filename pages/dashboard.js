@@ -2,96 +2,22 @@ import React from 'react';
 
 import { useSession } from 'next-auth/react';
 
-import {
-  CheckIcon,
-  PaperClipIcon,
-  ThumbUpIcon,
-  UserIcon,
-} from '@heroicons/react/solid';
+import { ThumbUpIcon } from '@heroicons/react/solid';
 
 const user = {
   name: 'Whitney Francis',
   email: 'whitney@example.com',
+  plan: 'Free',
+  about:
+    'Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui',
+  phone: '+1 555-555-5555',
   imageUrl:
     'https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80',
 };
 
 const family = [
-  { name: 'Agda', href: '#' },
-  { name: 'Iracema', href: '#' },
-];
-const eventTypes = {
-  applied: { icon: UserIcon, bgColorClass: 'bg-gray-400' },
-  advanced: { icon: ThumbUpIcon, bgColorClass: 'bg-blue-500' },
-  completed: { icon: CheckIcon, bgColorClass: 'bg-green-500' },
-};
-const timeline = [
-  {
-    id: 1,
-    type: eventTypes.applied,
-    content: 'Applied to',
-    target: 'Front End Developer',
-    date: 'Sep 20',
-    datetime: '2020-09-20',
-  },
-  {
-    id: 2,
-    type: eventTypes.advanced,
-    content: 'Advanced to phone screening by',
-    target: 'Bethany Blake',
-    date: 'Sep 22',
-    datetime: '2020-09-22',
-  },
-  {
-    id: 3,
-    type: eventTypes.completed,
-    content: 'Completed phone screening with',
-    target: 'Martha Gardner',
-    date: 'Sep 28',
-    datetime: '2020-09-28',
-  },
-  {
-    id: 4,
-    type: eventTypes.advanced,
-    content: 'Advanced to interview by',
-    target: 'Bethany Blake',
-    date: 'Sep 30',
-    datetime: '2020-09-30',
-  },
-  {
-    id: 5,
-    type: eventTypes.completed,
-    content: 'Completed interview with',
-    target: 'Katherine Snyder',
-    date: 'Oct 4',
-    datetime: '2020-10-04',
-  },
-];
-const comments = [
-  {
-    id: 1,
-    name: 'Leslie Alexander',
-    date: '4d ago',
-    imageId: '1494790108377-be9c29b29330',
-    body:
-      'Ducimus quas delectus ad maxime totam doloribus reiciendis ex. Tempore dolorem maiores. Similique voluptatibus tempore non ut.',
-  },
-  {
-    id: 2,
-    name: 'Michael Foster',
-    date: '4d ago',
-    imageId: '1519244703995-f4e0f30006d5',
-    body:
-      'Et ut autem. Voluptatem eum dolores sint necessitatibus quos. Quis eum qui dolorem accusantium voluptas voluptatem ipsum. Quo facere iusto quia accusamus veniam id explicabo et aut.',
-  },
-  {
-    id: 3,
-    name: 'Dries Vincent',
-    date: '4d ago',
-    imageId: '1506794778202-cad84cf45f1d',
-    body:
-      'Expedita consequatur sit ea voluptas quo ipsam recusandae. Ab sint et voluptatem repudiandae voluptatem et eveniet. Nihil quas consequatur autem. Perferendis rerum et.',
-  },
+  { name: 'Agda xxxxx yyyyyyyyy', href: '#' },
+  { name: 'Iracema xxxx yyyyyyyyy', href: '#' },
 ];
 
 function classNames(...classes) {
@@ -127,7 +53,7 @@ export default function Dashboard() {
                           Name
                         </dt>
                         <dd className='mt-1 text-sm text-gray-900'>
-                          Jhonathan Campos
+                          {user.name}
                         </dd>
                       </div>
                       <div className='sm:col-span-1'>
@@ -135,38 +61,35 @@ export default function Dashboard() {
                           Email address
                         </dt>
                         <dd className='mt-1 text-sm text-gray-900'>
-                          ricardocooper@example.com
+                          {user.email}
                         </dd>
                       </div>
                       <div className='sm:col-span-1'>
                         <dt className='text-sm font-medium text-gray-500'>
                           Plan
                         </dt>
-                        <dd className='mt-1 text-sm text-gray-900'>Free</dd>
+                        <dd className='mt-1 text-sm text-gray-900'>
+                          {user.plan}
+                        </dd>
                       </div>
                       <div className='sm:col-span-1'>
                         <dt className='text-sm font-medium text-gray-500'>
                           Phone
                         </dt>
                         <dd className='mt-1 text-sm text-gray-900'>
-                          +1 555-555-5555
+                          {user.phone}
                         </dd>
                       </div>
-                      <div className='sm:col-span-2'>
-                        <dt className='text-sm font-medium text-gray-500'>
+                      <div className='sm:col-span-2 lg:col-span-2'>
+                        <dt className='text-sm font-medium text-gray-500 text-justify'>
                           About
                         </dt>
-                        <dd className='mt-1 text-sm text-gray-900'>
-                          Fugiat ipsum ipsum deserunt culpa aute sint do nostrud
-                          anim incididunt cillum culpa consequat. Excepteur qui
-                          ipsum aliquip consequat sint. Sit id mollit nulla
-                          mollit nostrud in ea officia proident. Irure nostrud
-                          pariatur mollit ad adipisicing reprehenderit deserunt
-                          qui eu.
+                        <dd className='mt-1 text-sm text-gray-900 justify'>
+                          {user.about}
                         </dd>
                       </div>
-                      <div className='sm:col-span-2'>
-                        <dt className='text-sm font-medium text-gray-500'>
+                      <div className='sm:col-span-2 lg:col-span-2'>
+                        <dt className='text-sm font-medium text-gray-500 mb-5'>
                           Family Members
                         </dt>
                         <dd className='mt-1 text-sm text-gray-900'>
