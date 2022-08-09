@@ -53,7 +53,7 @@ export default function Dashboard() {
                           Name
                         </dt>
                         <dd className='mt-1 text-sm text-gray-900'>
-                          {user.name}
+                          {session.user.name}
                         </dd>
                       </div>
                       <div className='sm:col-span-1'>
@@ -61,7 +61,7 @@ export default function Dashboard() {
                           Email address
                         </dt>
                         <dd className='mt-1 text-sm text-gray-900'>
-                          {user.email}
+                          {session.user.email}
                         </dd>
                       </div>
                       <div className='sm:col-span-1'>
