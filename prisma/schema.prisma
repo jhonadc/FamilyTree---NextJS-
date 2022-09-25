@@ -20,6 +20,7 @@ model Album {
   published Boolean @default(false)
   author    User?   @relation(fields: [authorId], references: [id])
   authorId  String?
+  //images    String[]
 }
 
 model Account {
