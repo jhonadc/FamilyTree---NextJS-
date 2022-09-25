@@ -6,6 +6,7 @@
       "dom.iterable",
       "esnext"
     ],
+     "moduleResolution": "node",
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -22,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx", "pages/albums/[id].tsx"
-  ],
+, "pages/albums.js", "pages/api/user/createuser.tsx"  ],
   "exclude": [
     "node_modules"
   ]

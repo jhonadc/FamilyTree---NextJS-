@@ -1,5 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from  from "next"
-import {PrismaClient} from "@prisma/PrismaClient"
+import { NextApiRequest, NextApiResponse } from "next"
+import { PrismaClient, Prisma } from "@prisma/client"
 
 const prisma = new PrismaClient()
 
@@ -8,11 +8,11 @@ type Data = {
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
-  const post = await prisma.post.create({
+  const post = await prisma.user.create({
     data: {
       name: "Jhonathan Campos",
       email: "jhonathanaugusto@gmail.com"
     }
   })
-  res.status(200).json({name: "Jhonathan Campos"})
+  res.status(200).json({user})
 }
