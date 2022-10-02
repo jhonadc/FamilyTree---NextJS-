@@ -8,11 +8,19 @@ type Data = {
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
-  const user = await prisma.user.create({
+  const {name, email} = req.body;
+
+  try {
+    const user = await prisma.user.create({
     data: {
-      name: "Jhonathan Campos",
-      email: "getarush@gmail.com"
-    }
-  })
-  res.status(200).json(user)
+      name,
+      email
+    },
+  });
+
+  res.status(200).json({message: "data submitted"});
+} catch (error) {
+  res.status(400).json({error});
+  }
 }
+ 

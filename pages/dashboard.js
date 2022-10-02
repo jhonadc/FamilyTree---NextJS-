@@ -1,8 +1,9 @@
 import React from 'react';
-
 import { useSession } from 'next-auth/react';
-
+import { useForm } from 'react-hook-form';
 import { ThumbUpIcon } from '@heroicons/react/solid';
+import toast, { Toaster } from 'react-hot-toast';
+import { prisma } from '@prisma/client';
 
 const user = {
   name: 'Whitney Francis',
@@ -25,6 +26,46 @@ function classNames(...classes) {
 }
 
 export default function Dashboard() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitted },
+  } = useForm();
+
+  const create = async (data) => {
+    fetch('http://localhost:3000/api/user/createuser', {
+      body: JSON.stringify(data),
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  };
+
+  const read = async (data) => {
+    fetch('http://localhost:3000/api/user/getdata', {
+      body: JSON.stringify(data),
+      method: 'READ',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  };
+
+  const onSubmit = async (data) => {
+    toast.promise(
+      create(date),
+      {
+        loading: 'Data loading',
+        success: 'Data Submitted',
+        error: 'Something went wront',
+      },
+      {
+        duration: 3000,
+      }
+    );
+  };
+
   const { data: session } = useSession();
   if (session) {
     return (
