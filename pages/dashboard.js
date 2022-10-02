@@ -3,7 +3,9 @@ import { useSession } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 import { ThumbUpIcon } from '@heroicons/react/solid';
 import toast, { Toaster } from 'react-hot-toast';
-import { prisma } from '@prisma/client';
+import prisma from '@prisma/client';
+import Link from 'next/link';
+import Form from 'react-hook-form';
 
 const user = {
   name: 'Whitney Francis',
@@ -66,7 +68,7 @@ export default function Dashboard() {
     );
   };
 
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   if (session) {
     return (
       <>
@@ -125,9 +127,16 @@ export default function Dashboard() {
                         <dt className='text-sm font-medium text-gray-500 text-justify'>
                           About
                         </dt>
-                        <dd className='mt-1 text-sm text-gray-900 justify'>
+                        <Form className='mt-1 text-sm text-gray-900 justify'>
                           {user.about}
-                        </dd>
+                        </Form>
+                      </div>
+                      <div>
+                        <button
+                          type='button'
+                          className='inline-flex items-center rounded border border-gray-300 bg-white px-2.5 py-1.5 text-xs font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'>
+                          Edit Profile
+                        </button>
                       </div>
                       <div className='sm:col-span-2 lg:col-span-2'>
                         <dt className='text-sm font-medium text-gray-500 mb-5'>
