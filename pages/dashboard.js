@@ -1,13 +1,15 @@
 import React from 'react';
-import { useSession } from 'next-auth/react';
-import { useForm } from 'react-hook-form';
+import { useSession, getSession } from 'next-auth/react';
 import { ThumbUpIcon } from '@heroicons/react/solid';
-import toast, { Toaster } from 'react-hot-toast';
-import prisma from '@prisma/client';
+import Prisma from '@prisma/client';
 import Link from 'next/link';
 import Form from 'react-hook-form';
+import prisma from '../lib/prisma';
 
-const user = {
+import { GetServerSideProps } from 'next';
+
+{
+  /*const user = {
   name: 'Whitney Francis',
   email: 'whitney@example.com',
   plan: 'Free',
@@ -25,58 +27,39 @@ const family = [
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
+} */
 }
 
+export const getServerSideProps = async ({ req, res }) => {
+  const session = await getSession({ req });
+  if (!session) {
+    res.statusCode = 403;
+    console.log(res.statusCode);
+  }
+
+  const user = await prisma.user.findUnique({
+    where: {
+      email: session.user.email,
+    },
+    select: {
+      name: true,
+      email: true,
+    },
+  });
+  return {
+    props: { user },
+  };
+};
+
 export default function Dashboard() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitted },
-  } = useForm();
+  const { data: session } = useSession();
 
-  const create = async (data) => {
-    fetch('http://localhost:3000/api/user/createuser', {
-      body: JSON.stringify(data),
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-  };
-
-  const read = async (data) => {
-    fetch('http://localhost:3000/api/user/getdata', {
-      body: JSON.stringify(data),
-      method: 'READ',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-  };
-
-  const onSubmit = async (data) => {
-    toast.promise(
-      create(date),
-      {
-        loading: 'Data loading',
-        success: 'Data Submitted',
-        error: 'Something went wront',
-      },
-      {
-        duration: 3000,
-      }
-    );
-  };
-
-  const { data: session, status } = useSession();
   if (session) {
     return (
       <>
         <div>
-          {' '}
           <div className='mt-8 max-w-3xl mx-auto grid grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2'>
             <div className='space-y-6 lg:col-start-1 lg:col-span-2'>
-              {/* Description list*/}
               <section aria-labelledby='applicant-information-title'>
                 <div className='bg-white shadow sm:rounded-lg'>
                   <div className='px-4 py-5 sm:px-6 bg-gray-200'>
@@ -104,7 +87,7 @@ export default function Dashboard() {
                           Email address
                         </dt>
                         <dd className='mt-1 text-sm text-gray-900'>
-                          {session.user.email}
+                          {user.email}
                         </dd>
                       </div>
                       <div className='sm:col-span-1'>

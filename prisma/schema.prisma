@@ -2,7 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["referentialActions"] // You won't need this in Prisma 3.X or higher.
 }
 
@@ -57,6 +57,7 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  about         String?
   accounts      Account[]
   sessions      Session[]
   albums        Album[]
