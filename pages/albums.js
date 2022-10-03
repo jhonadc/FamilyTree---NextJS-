@@ -2,7 +2,6 @@
 //import { PrismaClient } from '@prisma/client';
 import { useSession } from 'next-auth/react';
 //const prisma = new PrismaClient();
-
 {
   /* export const getStaticProps: GetStaticProps = async () => {
   const albums = await prisma.album.findMany({

@@ -1,13 +1,11 @@
 import React from 'react';
-import { useSession, getSession } from 'next-auth/react';
-import { ThumbUpIcon } from '@heroicons/react/solid';
-import Prisma from '@prisma/client';
-import Link from 'next/link';
-import Form from 'react-hook-form';
-import prisma from '../lib/prisma';
-
 import { GetServerSideProps } from 'next';
+import { useSession, getSession } from 'next-auth/react';
 
+import { ThumbUpIcon } from '@heroicons/react/solid';
+import Form from 'react-hook-form';
+
+import prisma from '../lib/prisma';
 {
   /*const user = {
   name: 'Whitney Francis',
@@ -34,16 +32,12 @@ export const getServerSideProps = async ({ req, res }) => {
   const session = await getSession({ req });
   if (!session) {
     res.statusCode = 403;
-    console.log(res.statusCode);
+    return { props: { user: [] } };
   }
 
   const user = await prisma.user.findUnique({
     where: {
       email: session.user.email,
-    },
-    select: {
-      name: true,
-      email: true,
     },
   });
   return {
@@ -51,7 +45,7 @@ export const getServerSideProps = async ({ req, res }) => {
   };
 };
 
-export default function Dashboard() {
+export default function Dashboard(user) {
   const { data: session } = useSession();
 
   if (session) {
