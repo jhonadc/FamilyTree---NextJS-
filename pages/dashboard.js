@@ -17,7 +17,8 @@ import prisma from '../lib/prisma';
   imageUrl:
     'https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80',
 };
-
+*/
+}
 const family = [
   { name: 'Agda xxxxx yyyyyyyyy', href: '#' },
   { name: 'Iracema xxxx yyyyyyyyy', href: '#' },
@@ -25,7 +26,6 @@ const family = [
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
-} */
 }
 
 export const getServerSideProps = async ({ req, res }) => {
@@ -45,7 +45,7 @@ export const getServerSideProps = async ({ req, res }) => {
   };
 };
 
-export default function Dashboard(user) {
+export default function Dashboard({ user }) {
   const { data: session } = useSession();
 
   if (session) {
@@ -73,7 +73,7 @@ export default function Dashboard(user) {
                           Name
                         </dt>
                         <dd className='mt-1 text-sm text-gray-900'>
-                          {session.user.name}
+                          {user.name}
                         </dd>
                       </div>
                       <div className='sm:col-span-1'>
@@ -88,25 +88,23 @@ export default function Dashboard(user) {
                         <dt className='text-sm font-medium text-gray-500'>
                           Plan
                         </dt>
-                        <dd className='mt-1 text-sm text-gray-900'>
-                          {user.plan}
-                        </dd>
+                        <dd className='mt-1 text-sm text-gray-900'>USERPLAN</dd>
                       </div>
                       <div className='sm:col-span-1'>
                         <dt className='text-sm font-medium text-gray-500'>
                           Phone
                         </dt>
                         <dd className='mt-1 text-sm text-gray-900'>
-                          {user.phone}
+                          PHONENUMBER
                         </dd>
                       </div>
                       <div className='sm:col-span-2 lg:col-span-2'>
                         <dt className='text-sm font-medium text-gray-500 text-justify'>
                           About
                         </dt>
-                        <Form className='mt-1 text-sm text-gray-900 justify'>
-                          {user.about}
-                        </Form>
+                        <dd className='mt-1 text-sm text-gray-900 justify'>
+                          userabout
+                        </dd>
                       </div>
                       <div>
                         <button
