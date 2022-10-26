@@ -4,7 +4,9 @@ import { PrismaClient, Prisma } from "@prisma/client"
 const prisma = new PrismaClient()
 
 type Data = {
-  name: string
+  name?: string,
+  message?: string,
+  error?
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {

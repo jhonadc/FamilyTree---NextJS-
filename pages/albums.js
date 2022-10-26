@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 //import Prisma from '../lib/prisma';
 //import { PrismaClient } from '@prisma/client';
 import { useSession } from 'next-auth/react';

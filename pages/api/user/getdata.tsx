@@ -6,6 +6,7 @@ const prisma = new PrismaClient()
 
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const session = useSession()
   const users = await prisma.user.findMany({
     where: {

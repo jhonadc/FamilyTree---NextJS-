@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-key */
+/* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import Loginoutbtn from './loginoutbutton';
 import { Fragment } from 'react';

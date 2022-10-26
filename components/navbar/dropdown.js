@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';

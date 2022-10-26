@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import { signIn, useSession, signOut } from 'next-auth/react';
 import Github from 'next-auth/providers/github';

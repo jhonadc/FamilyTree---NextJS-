@@ -10,7 +10,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       //id: ""
     },
     data: {
-      name:"Joao"
+      name:"Joao",
       email:"jao@gmail.com",
     }
 })
