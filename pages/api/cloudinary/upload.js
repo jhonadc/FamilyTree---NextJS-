@@ -1,5 +1,5 @@
 import { getImage } from '../../../utils/formidable';
-import { uploadImage } from '../../../cloudinaryutils/cloudinary';
+import { uploadImage } from '../../../utils/cloudinary';
 import prisma from '../../../prisma';
 
 export const config = {
@@ -23,3 +23,4 @@ export default async function handle(req, res) {
 
   res.json(result);
 }
+
