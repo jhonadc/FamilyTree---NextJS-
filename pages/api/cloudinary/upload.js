@@ -1,6 +1,6 @@
-import { getImage } from '../../../utils/formidable';
+/*import { getImage } from '../../../utils/formidable';
 import { uploadImage } from '../../../utils/cloudinary';
-import prisma from '../../../prisma';
+import Prisma from '../../../prisma';
 
 export const config = {
   api: {

@@ -83,13 +83,6 @@ export default function Upload() {
           )}
         </form>
       </main>
-
-      <footer className=''>
-        <p>
-          Find the tutorial on{' '}
-          <a href='https://spacejelly.dev/'>spacejelly.dev</a>!
-        </p>
-      </footer>
     </div>
   );
 }
