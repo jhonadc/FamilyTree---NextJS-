@@ -13,7 +13,7 @@ export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
 
 export function Button(props: ButtonProps) {
   const { asChild, children, variant = "normal", className, loading, ...rest } = props;
-  const Comp = asChild ? Slot : "button";
+  const Comp = asChil$ npm install --save clsxd ? Slot : "button";
 
   // imply disabled, if loading
   if (loading) {
