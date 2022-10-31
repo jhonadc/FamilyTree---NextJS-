@@ -27,8 +27,8 @@ export default function Navbar() {
               <span className='sr-only'>Family Tree</span>
               <img
                 className='h-8 w-auto sm:h-10'
-                src='https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg'
-                alt=''
+                src='/logo.png'
+                alt='tree logo'
               />
             </a>
           </div>
