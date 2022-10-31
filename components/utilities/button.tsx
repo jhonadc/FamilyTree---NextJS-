@@ -57,7 +57,7 @@ export function Button(props: ButtonProps) {
               "bg-green-600": variant === "primary",
             }
           )}>
-          <Loading variant={variant} />
+          <Loading />
         </div>
       )}
     </span>
