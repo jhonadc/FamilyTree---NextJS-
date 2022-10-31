@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react';
 import Router from 'next/router';
 
@@ -69,15 +70,12 @@ export default function Upload() {
           <p>
             <input type='file' name='file' />
           </p>
-
-          <img src={imageSrc} />
-
+          <img src={imageSrc} alt='' />
           {imageSrc && !uploadData && (
             <p>
               <button>Upload Files</button>
             </p>
           )}
-
           {uploadData && (
             <code>
               <pre>{JSON.stringify(uploadData, null, 2)}</pre>
