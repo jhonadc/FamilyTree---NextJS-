@@ -3,44 +3,41 @@ import { CheckIcon } from '@heroicons/react/outline';
 
 const features = [
   {
-    name: 'Invite team members',
+    name: 'FOR GENERATIONS',
     description:
-      'Tempor tellus in aliquet eu et sit nulla tellus. Suspendisse est, molestie blandit quis ac. Lacus.',
+      'Safe online storage. Your memories available for uncountable family generations.',
   },
   {
-    name: 'Notifications',
-    description:
-      'Ornare donec rhoncus vitae nisl velit, neque, mauris dictum duis. Nibh urna non parturient.',
+    name: 'HISTORY COMES TOGETHER',
+    description: 'Know yourself better by understanding your family history.',
   },
   {
-    name: 'List view',
+    name: 'ACCESSIBILITY',
     description:
-      'Etiam cras augue ornare pretium sit malesuada morbi orci, venenatis. Dictum lacus.',
+      'Are you a begginer or a pro? Both can easily use the web apps, kids and grandmas!',
   },
   {
-    name: 'Boards',
-    description:
-      'Interdum quam pulvinar turpis tortor, egestas quis diam amet, natoque. Mauris sagittis.',
+    name: 'STRUCTURED DATA',
+    description: 'Filter by year, availability and type of memories available.',
   },
   {
-    name: 'Keyboard shortcuts',
-    description:
-      'Ullamcorper in ipsum ac feugiat. Senectus at aliquam vulputate mollis nec. In at risus odio.',
+    name: 'PHONE APP',
+    description: 'Access your content anywhere with our dedicated phone apps.',
   },
   {
-    name: 'Reporting',
+    name: 'ADD MEMBERS',
     description:
-      'Magna a vel sagittis aliquam eu amet. Et lorem auctor quam nunc odio. Sed bibendum.',
+      'You can add and manage family members content, like your babys memories.',
   },
   {
-    name: 'Calendars',
+    name: 'FRAME YOUR HISTORY',
     description:
-      'Sed mi, dapibus turpis orci posuere integer. A porta viverra posuere adipiscing turpis.',
+      'Family Tree is the place to frace your family history together.',
   },
   {
-    name: 'Mobile app',
+    name: 'GENETIC STORATE',
     description:
-      'Quisque sapien nunc nisl eros. Facilisis sagittis maecenas id dignissim tristique proin sed.',
+      'Study and understand your ancestrals biology. The platform will be ready for when such storage is legally and technology available.',
   },
 ];
 
