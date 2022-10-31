@@ -3,16 +3,16 @@ import Image from 'next/image';
 
 export default function Home() {
   return (
-    <div className='relative bg-blue-800 max-h-max'>
-      <div className='absolute inset-0'>
+    <div className='relative bg-black-800 max-h-max'>
+      <div className='absolute inset-0 '>
         <img
-          className='w-full h-full object-cover'
-          src='https://images.unsplash.com/photo-1525130413817-d45c1d127c42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=60&&sat=-100'
+          className='w-full h-full object-cover z-50 mt-50'
+          src='/mainpage.png'
           alt=''
           layout='fill'
         />
         <div
-          className='absolute inset-0 bg-indigo-800 mix-blend-multiply'
+          className='absolute inset-0 bg-gray-500 mix-blend-multiply'
           aria-hidden='true'
         />
       </div>
@@ -24,9 +24,10 @@ export default function Home() {
           ... for generations.
         </h3>
         <p className='mt-6 text-xl text-indigo-100 max-w-3xl'>
-          Mattis amet hendrerit dolor, quisque lorem pharetra. Pellentesque
-          lacus nisi urna, arcu sociis eu. Orci vel lectus nisl eget eget ut
-          consectetur. Sit justo viverra non adipisicing elit distinctio.
+          This website enables family members to safely share, via the internet
+          and cloud storage, digitalized memories (photos, texts, small videos)
+          with other family members for generations to come, in a easy to use
+          interface.
         </p>
       </div>
     </div>

@@ -1,67 +1,97 @@
 import React, { useState } from 'react';
-//import Layout from '../components/Layout';
 import Router from 'next/router';
 
 export default function Upload() {
-  const [imageUploaded, setImageUploaded] = useState();
+  const [imageSrc, setImageSrc] = useState();
+  const [uploadData, setUploadData] = useState();
 
-  const handleChange = (event) => {
-    setImageUploaded(event.target.files[0]);
-  };
+  /**
+   * handleOnChange
+   * @description Triggers when the file input changes (ex: when a file is selected)
+   */
 
-  const submitData = async (e) => {
-    e.preventDefault();
+  function handleOnChange(changeEvent) {
+    const reader = new FileReader();
 
-    if (!imageUploaded) {
-      return;
+    reader.onload = function (onLoadEvent) {
+      setImageSrc(onLoadEvent.target.result);
+      setUploadData(undefined);
+    };
+
+    reader.readAsDataURL(changeEvent.target.files[0]);
+  }
+
+  /**
+   * handleOnSubmit
+   * @description Triggers when the main form is submitted
+   */
+
+  async function handleOnSubmit(event) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const fileInput = Array.from(form.elements).find(
+      ({ name }) => name === 'file'
+    );
+
+    const formData = new FormData();
+
+    for (const file of fileInput.files) {
+      formData.append('file', file);
     }
 
-    try {
-      const formData = new FormData();
-      formData.append('image', imageUploaded);
+    formData.append('upload_preset', 'my-uploads');
 
-      await fetch('/api/upload', {
+    const data = await fetch(
+      'https://api.cloudinary.com/v1_1/dzesz1bgf/image/upload',
+      {
         method: 'POST',
         body: formData,
-      });
+      }
+    ).then((r) => r.json());
 
-      Router.push('/');
-    } catch (error) {
-      console.error(error);
-    }
-  };
+    setImageSrc(data.secure_url);
+    setUploadData(data);
+  }
 
   return (
-    <>
-      <div className='page'>
-        <form onSubmit={submitData}>
-          <h1>Upload Image</h1>
+    <div className=''>
+      <main className=''>
+        <h1 className=''>Image Uploader</h1>
 
-          <input
-            onChange={handleChange}
-            accept='.jpg, .png, .gif, .jpeg'
-            type='file'></input>
+        <p className=''>Upload your image to Cloudinary!</p>
 
-          <input type='submit' value='Upload' />
+        <form
+          className=''
+          method='post'
+          onChange={handleOnChange}
+          onSubmit={handleOnSubmit}>
+          <p>
+            <input type='file' name='file' />
+          </p>
+
+          <img src={imageSrc} />
+
+          {imageSrc && !uploadData && (
+            <p>
+              <button>Upload Files</button>
+            </p>
+          )}
+
+          {uploadData && (
+            <code>
+              <pre>{JSON.stringify(uploadData, null, 2)}</pre>
+            </code>
+          )}
         </form>
-      </div>
-      <style jsx>
-        {`
-          .page {
-            background: white;
-            padding: 3rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
+      </main>
 
-          input[type='submit'] {
-            background: #ececec;
-            border: 0;
-            padding: 1rem 2rem;
-          }
-        `}
-      </style>
-    </>
+      <footer className=''>
+        <p>
+          Find the tutorial on{' '}
+          <a href='https://spacejelly.dev/'>spacejelly.dev</a>!
+        </p>
+      </footer>
+    </div>
   );
 }
