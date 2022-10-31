@@ -11,6 +11,7 @@ export default function Home() {
           alt=''
           layout='fill'
         />
+
         <div
           className='absolute inset-0 bg-gray-500 mix-blend-multiply'
           aria-hidden='true'
