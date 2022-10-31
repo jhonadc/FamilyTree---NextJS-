@@ -62,34 +62,4 @@ export function Button(props: ButtonProps) {
       )}
     </span>
   );
-}
-
-export interface LinkButtonProps extends ComponentPropsWithoutRef<"a"> {
-  external?: boolean;
-}
-
-export function LinkButton(props: LinkButtonProps) {
-  let { external, children, ...rest } = props;
-
-  if (external) {
-    rest = {
-      rel: "noopener noreferrer",
-      target: "_blank",
-      ...rest,
-    };
-  }
-
-  return (
-    <Button asChild>
-      <a {...rest}>
-        {children}
-        {external && (
-          <>
-            {" "}
-            <ExternalLinkIcon className="ml-1.5 h-5 w-5" />
-          </>
-        )}
-      </a>
-    </Button>
-  );
-}
+          }
