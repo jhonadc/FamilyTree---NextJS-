@@ -14,7 +14,7 @@ export default function Example() {
                 Get in touch
               </h1>
               <p className='mt-6 text-xl text-warm-gray-500 max-w-3xl'>
-                Vel nunc non ut montes, viverra tempor. Proin lectus nibh
+                Ideas or doubts? Get in touch with us!
               </p>
             </div>
           </div>
@@ -166,8 +166,7 @@ export default function Example() {
                     Contact information
                   </h3>
                   <p className='mt-6 text-base text-teal-50 max-w-3xl'>
-                    Nullam risus blandit ac aliquam justo ipsum. Quam mauris
-                    volutpat massa dictumst amet. Sapien tortor lacus arcu.
+                    
                   </p>
                   <dl className='mt-8 space-y-6'>
                     <dt>
@@ -188,7 +187,7 @@ export default function Example() {
                         className='flex-shrink-0 w-6 h-6 text-teal-200'
                         aria-hidden='true'
                       />
-                      <span className='ml-3'>support@workcation.com</span>
+                      <span className='ml-3'>jhonathanaugusto@gmail.com</span>
                     </dd>
                   </dl>
                 </div>
