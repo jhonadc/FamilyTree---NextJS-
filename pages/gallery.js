@@ -2,14 +2,32 @@ import { PrismaClient, Prisma } from '@prisma/client';
 import { GetServerSideProps } from 'next';
 import { useSession, getSession } from 'next-auth/react';
 import { User } from '@prisma/client';
+import Button from '../components/utilities/button';
 //call getserversidesession
 import Image from 'next/image';
 const prisma = new PrismaClient();
 
-export default function Gallery({ images }) {
+export default function Gallery({ images, nextCursor }) {
   const { data: session } = useSession();
 
   if (session) {
+    async function handleOnLoadMore(e) {
+      e.preventDefault();
+
+      const results = await fetch('/api/search', {
+        method: 'POST',
+        body: JSON.stringify({
+          expression: `folder=""`,
+          nextCursor,
+        }),
+      }).then((r) => r.json());
+
+      const { resources } = results;
+
+      const images = mapImageResources(resources);
+
+      console.log('images', images);
+    }
     return (
       <>
         <div className='page'>
@@ -34,6 +52,11 @@ export default function Gallery({ images }) {
                 );
               })}
             </ul>
+            <p>
+              <Button variant='primary' onClick={handleOnLoadMore}>
+                Load More Results
+              </Button>
+            </p>
           </main>
         </div>
       </>
@@ -91,6 +114,7 @@ export const getServerSideProps = async ({ req, res }) => {
     props: {
       images,
       user,
+      nextCursor,
     },
   };
 };
