@@ -3,6 +3,7 @@ import { GetServerSideProps } from 'next';
 import { useSession, getSession } from 'next-auth/react';
 import { User } from '@prisma/client';
 //call getserversidesession
+import Image from 'next/image';
 const prisma = new PrismaClient();
 
 export const getServerSideProps = async ({ req, res }) => {
@@ -31,37 +32,36 @@ export const getServerSideProps = async ({ req, res }) => {
   };
 };
 
-export default function Gallery(user, image) {
+export default function Gallery({ images }) {
   const { data: session } = useSession();
-  image = Array.from(image);
+
   if (session) {
     return (
       <>
         <div className='page'>
           <h1>Memories Gallery</h1>
           <main>
-            {image.map((image) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={`https://res.cloudinary.com/${process.env.CLOUD_NAME}/v${image.version}/${image.publicId}.${image.format}`}
-                key={image.publicId}
-                alt='image'
-              />
-            ))}
+            <ul className=''>
+              {images.map((image) => {
+                return (
+                  <li key={image.id}>
+                    <a href={image.link} rel='noreferrer'>
+                      <div className={styles.imageImage}>
+                        <Image
+                          width={image.width}
+                          height={image.height}
+                          src={image.image}
+                          alt=''
+                        />
+                      </div>
+                      <h3 className={styles.imageTitle}>{image.title}</h3>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
           </main>
         </div>
-        <style jsx>{`
-          .image {
-            background: white;
-            transition: box-shadow 0.1s ease-in;
-          }
-          .image:hover {
-            box-shadow: 1px 1px 3px #aaa;
-          }
-          .image + .image {
-            margin-top: 2rem;
-          }
-        `}</style>
       </>
     );
   } else {
@@ -73,4 +73,37 @@ export default function Gallery(user, image) {
       </>
     );
   }
+}
+
+export async function getStaticProps() {
+  const results = await fetch(
+    `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/resources/image`,
+    {
+      headers: {
+        Authorization: `Basic ${Buffer.from(
+          process.env.CLOUDINARY_API_KEY +
+            ':' +
+            process.env.CLOUDINARY_API_SECRET
+        ).toString('base64')}`,
+      },
+    }
+  ).then((r) => r.json());
+
+  const { resources } = results;
+
+  const images = resources.map((resource) => {
+    const { width, height } = resource;
+    return {
+      id: resource.asset_id,
+      title: resource.public_id,
+      image: resource.secure_url,
+      width,
+      height,
+    };
+  });
+  return {
+    props: {
+      images,
+    },
+  };
 }
