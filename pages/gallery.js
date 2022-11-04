@@ -6,32 +6,6 @@ import { User } from '@prisma/client';
 import Image from 'next/image';
 const prisma = new PrismaClient();
 
-export const getServerSideProps = async ({ req, res }) => {
-  const session = await getSession({ req });
-  if (!session) {
-    res.statusCode = 403;
-    return { props: { user: [] } };
-  }
-
-  const user = await prisma.user.findUnique({
-    where: {
-      email: session.user.email,
-    },
-  });
-  return {
-    props: { user },
-  };
-
-  const image = await prisma.image.findMany({
-    where: {
-      email: session.user.email,
-    },
-  });
-  return {
-    props: { image },
-  };
-};
-
 export default function Gallery({ images }) {
   const { data: session } = useSession();
 
@@ -46,7 +20,7 @@ export default function Gallery({ images }) {
                 return (
                   <li key={image.id}>
                     <a href={image.link} rel='noreferrer'>
-                      <div className={styles.imageImage}>
+                      <div className=''>
                         <Image
                           width={image.width}
                           height={image.height}
@@ -54,7 +28,7 @@ export default function Gallery({ images }) {
                           alt=''
                         />
                       </div>
-                      <h3 className={styles.imageTitle}>{image.title}</h3>
+                      <h3 className=''>{image.title}</h3>
                     </a>
                   </li>
                 );
@@ -75,7 +49,19 @@ export default function Gallery({ images }) {
   }
 }
 
-export async function getStaticProps() {
+export const getServerSideProps = async ({ req, res }) => {
+  const session = await getSession({ req });
+  if (!session) {
+    res.statusCode = 403;
+    return { props: { user: [] } };
+  }
+
+  const user = await prisma.user.findUnique({
+    where: {
+      email: session.user.email,
+    },
+  });
+
   const results = await fetch(
     `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/resources/image`,
     {
@@ -104,6 +90,7 @@ export async function getStaticProps() {
   return {
     props: {
       images,
+      user,
     },
   };
-}
+};
