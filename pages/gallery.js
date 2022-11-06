@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { PrismaClient, Prisma } from '@prisma/client';
 import { GetServerSideProps } from 'next';
 import { useSession, getSession } from 'next-auth/react';
@@ -6,29 +7,46 @@ import Button from '../components/utilities/button';
 //call getserversidesession
 import Image from 'next/image';
 import { search, mapImageResources } from '../lib/cloudinary';
+import { set } from 'react-hook-form';
 const prisma = new PrismaClient();
 
-export default function Gallery({ images, nextCursor }) {
+export default function Gallery({
+  images: defaultImages,
+  nextCursor: defaultNextCursor,
+}) {
   const { data: session } = useSession();
+  const [images, setImages] = useState(defaultImages);
+  const [nextCursor, setNextCursor] = useState(defaultNextCursor);
+
+  console.log('images', images);
+  console.log('nextCursor', nextCursor);
+
+  async function handleLoadMore(e) {
+    e.preventDefault(); //avoid whole page from refreshing
+
+    const results = await fetch('/api/search', {
+      method: 'POST',
+      body: JSON.stringify({
+        expression: `folder=""`,
+        nextCursor,
+      }),
+    }).then((r) => r.json());
+
+    const { resources, next_cursor: updatedNextCursor } = results;
+
+    const images = mapImageResources(resources);
+
+    //new state for images. old plus new set
+    setImages((prev) => {
+      return [...prev, ...images];
+    });
+
+    setNextCursor(updatedNextCursor);
+
+    console.log('images', images);
+  }
 
   if (session) {
-    async function handleOnLoadMore(e) {
-      e.preventDefault();
-
-      const results = await fetch('/api/search', {
-        method: 'POST',
-        body: JSON.stringify({
-          expression: `folder=""`,
-          nextCursor,
-        }),
-      }).then((r) => r.json());
-
-      const { resources } = results;
-
-      const images = mapImageResources(resources);
-
-      console.log('images', images);
-    }
     return (
       <>
         <div className='page'>
@@ -54,7 +72,7 @@ export default function Gallery({ images, nextCursor }) {
               })}
             </ul>
             <p>
-              <button onClick={handleOnLoadMore}>Load More Results</button>
+              <button onClick={handleLoadMore}>Load More Results</button>
             </p>
           </main>
         </div>
@@ -72,6 +90,7 @@ export default function Gallery({ images, nextCursor }) {
 }
 
 export const getServerSideProps = async ({ req, res }) => {
+  //check loggen in user - authorization
   const session = await getSession({ req });
   if (!session) {
     res.statusCode = 403;
@@ -83,6 +102,8 @@ export const getServerSideProps = async ({ req, res }) => {
       email: session.user.email,
     },
   });
+
+  //fetch photos from cloudinary
 
   const results = await search();
 
