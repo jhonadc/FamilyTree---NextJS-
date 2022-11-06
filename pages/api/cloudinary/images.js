@@ -1,7 +1,7 @@
-import { PrismaClient, Prisma } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
+import prisma from '../lib/prisma';
 import { User } from '@prisma/client';
 //call getserversidesession
-const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
   // eslint-disable-next-line react-hooks/rules-of-hooks

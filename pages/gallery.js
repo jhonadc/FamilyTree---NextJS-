@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { PrismaClient, Prisma } from '@prisma/client';
+import prisma from '../lib/prisma';
 import { GetServerSideProps } from 'next';
 import { useSession, getSession } from 'next-auth/react';
 import { User } from '@prisma/client';
@@ -8,7 +8,6 @@ import Button from '../components/utilities/button';
 import Image from 'next/image';
 import { search, mapImageResources } from '../lib/cloudinary';
 import { set } from 'react-hook-form';
-const prisma = new PrismaClient();
 
 export default function Gallery({
   images: defaultImages,
