@@ -1,4 +1,5 @@
-import { PrismaClient } from '@prisma/client';
+{
+  /* import { PrismaClient } from '@prisma/client';
 import prisma from '../lib/prisma';
 import { User } from '@prisma/client';
 //call getserversidesession
@@ -11,4 +12,5 @@ export default async function handler(req, res) {
     },
   });
   res.status(200).json(images);
+} */
 }
