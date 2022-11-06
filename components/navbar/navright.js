@@ -8,7 +8,7 @@ export default function Navright() {
   if (session) {
     return (
       <>
-        <Link href='/albums'>
+        <Link href='/gallery'>
           <Button>Memories</Button>
         </Link>
         <br />
