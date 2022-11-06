@@ -5,6 +5,7 @@ import { User } from '@prisma/client';
 import Button from '../components/utilities/button';
 //call getserversidesession
 import Image from 'next/image';
+import { search } from '../lib/cloudinary';
 const prisma = new PrismaClient();
 
 export default function Gallery({ images, nextCursor }) {
@@ -85,20 +86,9 @@ export const getServerSideProps = async ({ req, res }) => {
     },
   });
 
-  const results = await fetch(
-    `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/resources/image`,
-    {
-      headers: {
-        Authorization: `Basic ${Buffer.from(
-          process.env.CLOUDINARY_API_KEY +
-            ':' +
-            process.env.CLOUDINARY_API_SECRET
-        ).toString('base64')}`,
-      },
-    }
-  ).then((r) => r.json());
+  const results = await search();
 
-  const { resources } = results;
+  const { resources, next_cursor: nextCursor } = results;
 
   const images = resources.map((resource) => {
     const { width, height } = resource;
