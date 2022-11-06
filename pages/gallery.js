@@ -5,7 +5,7 @@ import { User } from '@prisma/client';
 import Button from '../components/utilities/button';
 //call getserversidesession
 import Image from 'next/image';
-import { search } from '../lib/cloudinary';
+import { search, mapImageResources } from '../lib/cloudinary';
 const prisma = new PrismaClient();
 
 export default function Gallery({ images, nextCursor }) {
@@ -54,9 +54,7 @@ export default function Gallery({ images, nextCursor }) {
               })}
             </ul>
             <p>
-              <Button variant='primary' onClick={handleOnLoadMore}>
-                Load More Results
-              </Button>
+              <button onClick={handleOnLoadMore}>Load More Results</button>
             </p>
           </main>
         </div>
@@ -90,16 +88,7 @@ export const getServerSideProps = async ({ req, res }) => {
 
   const { resources, next_cursor: nextCursor } = results;
 
-  const images = resources.map((resource) => {
-    const { width, height } = resource;
-    return {
-      id: resource.asset_id,
-      title: resource.public_id,
-      image: resource.secure_url,
-      width,
-      height,
-    };
-  });
+  const images = mapImageResources(resources);
   return {
     props: {
       images,
