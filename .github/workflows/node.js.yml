@@ -28,4 +28,10 @@ jobs:
         cache: 'npm'
     - run: npm install
     - run: npm run build --if-present
+        # Heroku PostgrSQL Database Integration
+    - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: "familytree-nextjs" #Must be unique in Heroku
+        heroku_email: "jhonathanaugusto@gmail.com"
    # - run: npm test
