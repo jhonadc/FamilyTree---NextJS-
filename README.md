@@ -1,34 +1,67 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+Family Tree
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Family Tree allows family members to safely share, via the internet and cloud storage, digitalized memories (photos, texts, small videos) with other family members for generations to come, in a easy to use interface.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+General Information
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Technologies Used
+NEXT JS
+HTML/JSX/TAILWIND/JAVASCRIPT
+POSTEGRESQL/PRISMA
+VERCEL
+GITHUB/GITHUB ACTIONS
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Setup
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+After cloning the project from github, access the main directory on the terminal and run npm run dev
 
-## Learn More
+Open http://localhost:3000 to view it in your browser.
 
-To learn more about Next.js, take a look at the following resources:
+The page will reload when you make changes. 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The Database (DB) used is PostgreSQL and managed with PRISMA ORM. 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+The Prisma DB schema is located on the schema.prisma inside the Prisma folder, from the application root directory.
 
-## Deploy on Vercel
+To access Prisma Studio tool and visualize the data on the browser, run "npm run prisma studio"
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+After changing the DB schema, it is necessary to update the Database by running "npm run prisma db push"
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This is the application diagram:
+
+<diagram>
+
+
+Usage
+
+Click on the top right button "Access". Log in using you GitHub credentials (API / Authentication). 
+
+After loggin in, the Memories button will be shown on the navigation bar (Authorization). 
+
+On the Memories page, you can see the photos that are stored in Cloudinary (API). 
+
+In the bottom of the page there is a Load More button that will load another set of images (Pagination).
+
+The profile page and loggout button can be accessed on the top right side of the page.
+
+The profile page is created with the data obtained from the OAuth Authentication and saved on the PostgreSQL database. The DB is managed with PRISMA OEM.
+
+
+Database
+
+<database diagram>
+
+
+Security
+
+<text>
+
+Continuous Integration / Continuous Delivery System
+
+<text>
+
+About
+
+Jhonathan Campos, 4th Gen student at CODE University of Applied Sciences - Berlin.
