@@ -44,6 +44,8 @@ npm run prisma db push
 
 ## Application diagram:
 
+![App Diagram](public/logo.png)
+
 ## Usage
 
 Click on the top right button "Access". Log in using you GitHub credentials (API / Authentication).
