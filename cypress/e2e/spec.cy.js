@@ -1,6 +1,6 @@
 describe('Load HomePage', () => {
   it('finds the content "type"', () => {
-    cy.visit('http://localhost:3000');
+    cy.visit('https://family-tree-jhonathan-campos.vercel.app/');
 
     cy.contains('generations');
   });
@@ -8,7 +8,7 @@ describe('Load HomePage', () => {
 
 describe('About page renders and link works', () => {
   it('clicks the link "About"', () => {
-    cy.visit('http://localhost:3000');
+    cy.visit('https://family-tree-jhonathan-campos.vercel.app/');
 
     cy.contains('About').click();
     cy.url().should('include', '/about');
@@ -17,7 +17,7 @@ describe('About page renders and link works', () => {
 
 describe('Features page renders and link works', () => {
   it('clicks the link "Features"', () => {
-    cy.visit('http://localhost:3000');
+    cy.visit('https://family-tree-jhonathan-campos.vercel.app/');
 
     cy.contains('Features').click();
     cy.url().should('include', '/features');
@@ -26,7 +26,7 @@ describe('Features page renders and link works', () => {
 
 describe('Enter buttons renders', () => {
   it('clicks the link "Enter"', () => {
-    cy.visit('http://localhost:3000');
+    cy.visit('https://family-tree-jhonathan-campos.vercel.app/');
 
     cy.contains('Enter').click();
   });
@@ -34,7 +34,7 @@ describe('Enter buttons renders', () => {
 
 describe('Connection with GitHub OAuth is active', () => {
   it('clicks the link "Enter"', () => {
-    cy.visit('http://localhost:3000');
+    cy.visit('https://family-tree-jhonathan-campos.vercel.app/');
 
     cy.contains('Enter').click();
     cy.contains('Sign in with GitHub');
@@ -44,15 +44,11 @@ describe('Connection with GitHub OAuth is active', () => {
 describe('Mobile menu test', () => {
   context('iphone-5 resolution', () => {
     beforeEach(() => {
-      /**
-       * Run these tests as if in a desktop browser,
-       * with a 720p monitor
-       */
       cy.viewport('iphone-5');
     });
     describe('Visit main page', () => {
       it('Should visit home page', () => {
-        cy.visit('http://localhost:3000');
+        cy.visit('https://family-tree-jhonathan-campos.vercel.app/');
       });
       describe('Test Mobile Menu', () => {
         it('Should open mobile menu', () => {
