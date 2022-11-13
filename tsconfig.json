@@ -23,7 +23,10 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx", "pages/albums/[id].tsx"
-, "pages/albums.js", "pages/api/user/createuser.tsx", "components/utilities/loading.js"  ],
+, "pages/albums.js", 
+"pages/api/user/createuser.tsx", 
+"components/utilities/loading.js"
+  ],
   "exclude": [
     "node_modules"
   ]
