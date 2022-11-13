@@ -103,13 +103,18 @@ export default function Dashboard({ user }) {
                           About
                         </dt>
                         <dd className='mt-1 text-sm text-gray-900 justify'>
-                          userabout
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Donec et libero in felis sagittis gravida.
+                          Vestibulum tristique ac dolor at auctor. Pellentesque
+                          habitant morbi tristique senectus et netus et
+                          malesuada fames ac turpis egestas. Suspendisse
+                          fermentum molestie lorem quis fermentum.
                         </dd>
                       </div>
                       <div>
                         <button
                           type='button'
-                          className='inline-flex items-center rounded border border-gray-300 bg-white px-2.5 py-1.5 text-xs font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'>
+                          className='invisible inline-flex items-center rounded border border-gray-300 bg-white px-2.5 py-1.5 text-xs font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'>
                           Edit Profile
                         </button>
                       </div>
