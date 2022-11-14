@@ -56,13 +56,13 @@ export default function Dashboard({ user }) {
             <div className='space-y-6 lg:col-start-1 lg:col-span-2'>
               <section aria-labelledby='applicant-information-title'>
                 <div className='bg-white shadow sm:rounded-lg'>
-                  <div className='px-4 py-5 sm:px-6 bg-gray-200'>
+                  <div className='px-4 py-5 sm:px-6 bg-blue-600'>
                     <h2
                       id='applicant-information-title'
-                      className='text-lg leading-6 font-medium text-gray-900'>
+                      className='text-xl leading-6 font-medium text-white'>
                       Profile
                     </h2>
-                    <p className='mt-1 max-w-2xl text-sm text-gray-500'>
+                    <p className='mt-1 max-w-2xl text-lg text-white'>
                       Personal details
                     </p>
                   </div>
@@ -102,7 +102,7 @@ export default function Dashboard({ user }) {
                         <dt className='text-sm font-medium text-gray-500 text-justify'>
                           About
                         </dt>
-                        <dd className='mt-1 text-sm text-gray-900 justify'>
+                        <dd className='mt-1 text-lg text-gray-900 justify'>
                           Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit. Donec et libero in felis sagittis gravida.
                           Vestibulum tristique ac dolor at auctor. Pellentesque
