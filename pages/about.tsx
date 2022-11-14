@@ -3,7 +3,7 @@ import { MailIcon,  PhoneIcon} from '@heroicons/react/outline';
 
 export default function About () {
   return (
-    <div className='bg-white'>
+    <div className='bg-gradient-to-r from-cyan-500 to-blue-500 '>
       <main className='overflow-hidden'>
         {/* Header */}
         <div className='bg-warm-gray-50'>
@@ -61,7 +61,7 @@ export default function About () {
               />
             </svg>
           </div>
-          <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+          <div className='max-w-8xl mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='relative bg-white shadow-xl'>
               <h2 id='contact-heading' className='sr-only'>
                 Contact us
@@ -69,7 +69,7 @@ export default function About () {
 
               <div className='grid grid-cols-1 '>
                 {/* Contact information */}
-                <div className='relative overflow-hidden py-10 max-w-3xl px-6 bg-gradient-to-b from-blue-500 to-blue-600 sm:px-10 xl:p-12'>
+                <div className='mt-10 relative overflow-hidden py-10 max-w-3xl px-6 bg-gradient-to-b from-blue-500 to-blue-600 sm:px-10 xl:p-12'>
                   {/* Decorative angle backgrounds */}
                   <div
                     className='absolute inset-0 pointer-events-none sm:hidden'
