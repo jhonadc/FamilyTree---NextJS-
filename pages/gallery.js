@@ -56,7 +56,7 @@ export default function Gallery({
           </div>
 
           <main>
-            <ul className='mt-10'>
+            <ul className='mt-10'>ui 
               {images.map((image) => {
                 return (
                   <li key={image.id}>

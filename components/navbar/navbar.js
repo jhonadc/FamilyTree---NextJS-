@@ -73,8 +73,8 @@ export default function Navbar() {
                     <div>
                       <img
                         className='h-8 w-auto'
-                        src='https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg'
-                        alt='Workflow'
+                        src='/logo.png'
+                        alt='tree logo'
                       />
                     </div>
                     <div className='-mr-2'>
