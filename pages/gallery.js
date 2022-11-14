@@ -49,7 +49,13 @@ export default function Gallery({
     return (
       <>
         <div className='page'>
-          <h1>Memories Gallery</h1>
+
+          <div className='px-4 py-5 sm:px-6 bg-blue-600'>
+            <h1 className='text-xl leading-6 font-medium text-white'>
+              Memories Gallery
+            </h1>
+          </div>
+
           <main>
             <ul className=''>
               {images.map((image) => {
