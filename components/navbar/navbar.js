@@ -78,7 +78,7 @@ export default function Navbar() {
                       />
                     </div>
                     <div className='-mr-2'>
-                      <Popover.Button className='bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500'>
+                      <Popover.Button className='bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 '>
                         <span className='sr-only'>Close menu</span>
                         <XIcon className='h-6 w-6' aria-hidden='true' />
                       </Popover.Button>
@@ -86,12 +86,12 @@ export default function Navbar() {
                   </div>
                 </div>
                 <div className='py-6 px-5'>
-                  <div className='grid grid-cols-3 align-center mx-2'>
+                  <div className='grid grid-cols-1 align-right mx-2'>
                     {navigation.map((item) => (
                       <Link href={item.href}>
                         <a
                           key={item.name}
-                          className='text-base font-medium text-gray-900 hover:text-gray-700'>
+                          className='text-base font-medium text-2xl text-gray-900 hover:text-blue-700'>
                           {item.name}
                         </a>
                       </Link>
