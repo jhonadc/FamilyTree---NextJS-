@@ -9,7 +9,7 @@ export default function Navright() {
     return (
       <>
         <Link href='/gallery'>
-          <Button>Memories</Button>
+          <Button variant='primary'>Memories</Button>
         </Link>
         <br />
         <Dropdown />
@@ -18,7 +18,9 @@ export default function Navright() {
   } else {
     return (
       <>
-        <Button onClick={() => signIn()}>Enter</Button>
+        <Button variant='primary' onClick={() => signIn()}>
+          Enter
+        </Button>
       </>
     );
   }

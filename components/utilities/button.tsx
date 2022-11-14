@@ -34,11 +34,11 @@ export function Button(props: ButtonProps) {
     !loading &&
       "disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500",
     variant === "primary"
-      ? "border-transparent bg-green-600 text-white"
+      ? "border-transparent bg-blue-600 text-white"
       : "border-gray-300 bg-white text-gray-700",
     !loading &&
       (variant === "primary"
-        ? "hover:bg-green-700 active:bg-green-800"
+        ? "hover:bg-blue-700 active:bg-blue-800"
         : "hover:bg-gray-50 active:bg-gray-100")
   );
 
@@ -54,7 +54,7 @@ export function Button(props: ButtonProps) {
             "absolute inset-[1px] flex items-center justify-center rounded-md ",
             {
               "bg-white": variant === "normal",
-              "bg-green-600": variant === "primary",
+              "bg-blue-600": variant === "primary",
             }
           )}>
           <Loading />

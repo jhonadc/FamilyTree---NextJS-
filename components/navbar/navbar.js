@@ -39,12 +39,14 @@ export default function Navbar() {
               <MenuIcon className='h-6 w-6' aria-hidden='true' />
             </Popover.Button>
           </div>
-          <Popover.Group as='nav' className='hidden md:flex space-x-10'>
+          <Popover.Group
+            as='nav'
+            className='hidden md:flex space-x-20 mb-0 pb-0'>
             {navigation.map((item) => (
               <Link href={item.href}>
                 <a
                   key={item.name}
-                  className='text-base font-medium text-gray-500 hover:text-gray-900'>
+                  className='antialiased text-base font-medium hover:text-gray-500 text-gray-900 sm:text-lg lg:text-xl'>
                   {item.name}
                 </a>
               </Link>
