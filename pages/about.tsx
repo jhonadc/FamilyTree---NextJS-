@@ -1,7 +1,7 @@
 
 import { MailIcon,  PhoneIcon} from '@heroicons/react/outline';
 
-export default function Example() {
+export default function About () {
   return (
     <div className='bg-white'>
       <main className='overflow-hidden'>
@@ -67,9 +67,9 @@ export default function Example() {
                 Contact us
               </h2>
 
-              <div className='grid grid-cols-1 lg:grid-cols-3'>
+              <div className='grid grid-cols-1 '>
                 {/* Contact information */}
-                <div className='relative overflow-hidden py-10 px-6 bg-gradient-to-b from-teal-500 to-teal-600 sm:px-10 xl:p-12'>
+                <div className='relative overflow-hidden py-10 max-w-3xl px-6 bg-gradient-to-b from-blue-500 to-blue-600 sm:px-10 xl:p-12'>
                   {/* Decorative angle backgrounds */}
                   <div
                     className='absolute inset-0 pointer-events-none sm:hidden'
