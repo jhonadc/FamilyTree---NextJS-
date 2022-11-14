@@ -49,7 +49,6 @@ export default function Gallery({
     return (
       <>
         <div className='page'>
-
           <div className='px-4 py-5 sm:px-6 bg-blue-600'>
             <h1 className='text-xl leading-6 font-medium text-white'>
               Memories Gallery
@@ -57,7 +56,7 @@ export default function Gallery({
           </div>
 
           <main>
-            <ul className=''>
+            <ul className='mt-10'>
               {images.map((image) => {
                 return (
                   <li key={image.id}>
@@ -70,14 +69,24 @@ export default function Gallery({
                           alt=''
                         />
                       </div>
-                      <h3 className=''>{image.title}</h3>
+                      <h3 className='ml-10 text-sm leading-6 font-medium text-gray-500'>
+                        {image.title}
+                      </h3>
+
+                      <div className='my-5 w-full border-t border-gray-300' />
                     </a>
                   </li>
                 );
               })}
             </ul>
             <p>
-              <button onClick={handleLoadMore}>Load More Results</button>
+              <button
+                type='button'
+                className='ml-20 mb-20 inline-flex items-center rounded-md border border-transparent bg-blue-600 px-10 py-10 text-2xl font-medium leading-4 text-white shadow-sm hover:bg-blue-700  '
+                onClick={handleLoadMore}>
+                {' '}
+                Load More Results
+              </button>
             </p>
           </main>
         </div>
