@@ -1,8 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
-//import Prisma from '../lib/prisma';
-//import { PrismaClient } from '@prisma/client';
 import { useSession } from 'next-auth/react';
-//const prisma = new PrismaClient();
+
 {
   /* export const getStaticProps: GetStaticProps = async () => {
   const albums = await prisma.album.findMany({
@@ -24,23 +21,6 @@ export default function Albums() {
 }
 */
 }
-
-/*
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
-*/
 
 const albums = [
   {

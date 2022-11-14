@@ -1,13 +1,9 @@
 import { useState, useEffect } from 'react';
 import prisma from '../lib/prisma';
-import { GetServerSideProps } from 'next';
 import { useSession, getSession } from 'next-auth/react';
-import { User } from '@prisma/client';
-import Button from '../components/utilities/button';
-//call getserversidesession
 import Image from 'next/image';
 import { search, mapImageResources } from '../lib/cloudinary';
-import { set } from 'react-hook-form';
+import Link from 'next/link';
 
 export default function Gallery({
   images: defaultImages,
@@ -56,7 +52,8 @@ export default function Gallery({
           </div>
 
           <main>
-            <ul className='mt-10'>ui 
+            <ul className='mt-10'>
+              ui
               {images.map((image) => {
                 return (
                   <li key={image.id}>
@@ -94,11 +91,16 @@ export default function Gallery({
     );
   } else {
     return (
-      <>
-        <h1 className='text-4xl font-extrabold tracking-tight text-warm-gray-900 sm:text-5xl lg:text-6xl'>
+      <div className=' py-20 bg-gradient-to-b from-blue-500 to-cyan-600'>
+        <h1 className='ml-10 mb-10  text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl'>
           You are not signed in.
         </h1>
-      </>
+        <Link href='api/auth/signin'>
+          <a className='ml-10  cursor-pointer py-20 text-xl font-extrabold tracking-tight text-white sm:text-3xl lg:text-4xl'>
+            Click here to enter
+          </a>
+        </Link>
+      </div>
     );
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { GetServerSideProps } from 'next';
+import Link from 'next/link';
 import { useSession, getSession } from 'next-auth/react';
 import { Table } from '../components/utilities/table';
 
@@ -158,11 +158,16 @@ export default function Dashboard({ user }) {
     );
   } else {
     return (
-      <>
-        <h1 className='text-4xl font-extrabold tracking-tight text-warm-gray-900 sm:text-5xl lg:text-6xl'>
+      <div className=' py-20 bg-gradient-to-b from-blue-500 to-cyan-600'>
+        <h1 className='ml-10 mb-10  text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl'>
           You are not signed in.
         </h1>
-      </>
+        <Link href='api/auth/signin'>
+          <a className='ml-10  cursor-pointer py-20 text-xl font-extrabold tracking-tight text-white sm:text-3xl lg:text-4xl'>
+            Click here to enter
+          </a>
+        </Link>
+      </div>
     );
   }
 }
