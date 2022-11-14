@@ -1,27 +1,13 @@
 import React from 'react';
 import { GetServerSideProps } from 'next';
 import { useSession, getSession } from 'next-auth/react';
-
-import { ThumbUpIcon } from '@heroicons/react/solid';
-import Form from 'react-hook-form';
+import { Table } from '../components/utilities/table';
 
 import prisma from '../lib/prisma';
-{
-  /*const user = {
-  name: 'Whitney Francis',
-  email: 'whitney@example.com',
-  plan: 'Free',
-  about:
-    'Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui',
-  phone: '+1 555-555-5555',
-  imageUrl:
-    'https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80',
-};
-*/
-}
+
 const family = [
-  { name: 'Agda xxxxx yyyyyyyyy', href: '#' },
-  { name: 'Iracema xxxx yyyyyyyyy', href: '#' },
+  { name: 'Agda Lima Lira', email: 'fakeagda@gmail.com', href: '#' },
+  { name: 'Iracema Lira Lima', email: 'fakeiracema@gmail.com', href: '#' },
 ];
 
 function classNames(...classes) {
@@ -123,22 +109,32 @@ export default function Dashboard({ user }) {
                           Family Members
                         </dt>
                         <dd className='mt-1 text-sm text-gray-900'>
-                          <ul
-                            role='list'
-                            className='border border-gray-200 rounded-md divide-y divide-gray-200'>
-                            {family.map((family) => (
-                              <li
-                                key={family.name}
-                                className='pl-3 pr-4 py-3 flex items-center justify-between text-sm'>
-                                <div className='w-0 flex-1 flex items-center'>
-                                  <ThumbUpIcon
-                                    className='flex-shrink-0 h-5 w-5 text-gray-400'
-                                    aria-hidden='true'
-                                  />
-                                  <span className='ml-2 flex-1 w-0 truncate'>
-                                    {family.name}
-                                  </span>
+                          <Table
+                            columns={[
+                              { id: 'name', label: 'Name' },
+                              { id: 'email', label: 'Email' },
+                              { id: 'albums', label: 'Albuns' },
+                            ]}
+                            rows={family.map((family) => ({
+                              name: (
+                                <div className='flex items-center'>
+                                  <div className='ml-4'>
+                                    <div className='font-medium text-gray-900'>
+                                      {family.name}
+                                    </div>
+                                  </div>
                                 </div>
+                              ),
+                              email: (
+                                <div className='flex items-center'>
+                                  <div className='ml-4'>
+                                    <div className='font-medium text-gray-900'>
+                                      {family.email}
+                                    </div>
+                                  </div>
+                                </div>
+                              ),
+                              albuns: (
                                 <div className='ml-4 flex-shrink-0'>
                                   <a
                                     href={family.href}
@@ -146,9 +142,9 @@ export default function Dashboard({ user }) {
                                     Available Albuns
                                   </a>
                                 </div>
-                              </li>
-                            ))}
-                          </ul>
+                              ),
+                            }))}
+                          />
                         </dd>
                       </div>
                     </dl>
