@@ -2,12 +2,15 @@
 
 ## _Share your memories...for Generations._
 
-![App Diagram](/public/mainpage.png "Application Diagram")
+
 
 Family Tree allows family members to safely share, via the internet and cloud storage, digitalized memories (photos, texts, small videos) with other family members for generations to come, in a easy to use interface.
 
 # General Information
 
+This is the application diagram.
+
+![App Diagram](/public/mainpage.png "Application Diagram")
 ## Technologies Used
 
 - NEXT JS
@@ -42,30 +45,14 @@ For the app to run properly, the .env must be created on the root folder of the 
 > CLOUDINARY_API_SECRET
 > SERVER_PATH = http://localhost:3001/
 
-** The variables will be sent through a message on Slack.**
+*** The variables will be sent through a message on Slack.**
 
 Notice that the NEXTAUTH_URL annd the SERVER_PATH are configured to the port 3000. If the app is open on another door at your local system, the variables must be updated accordingly.
 
 The page will reload when you make changes.
 
-The Database (DB) used is PostgreSQL and managed with PRISMA ORM.
-
-The Prisma DB schema is located on the schema.prisma inside the Prisma folder, from the application root directory.
-
-To access Prisma Studio tool and visualize the data on the browser, run:
-
-```sh
-npm run prisma studio
-```
-
-After changing the DB schema, it is necessary to update the Database by running:
-
-```sh
-npm run prisma db push
-```
-
-### Important info: 
-*** From November 28 on, many HEROKU products, including the Heroku PostgreSQL db service, will become paid. Any problem due to this service change cannot be foreseen and, in case you have any problem, let me know and I will get in touch with them and fix it as soon as possible. ***
+### Important info
+ From November 28 on, many HEROKU products, including the Heroku PostgreSQL db service, will become paid. Any problem due to this service change cannot be foreseen and, in case you have any problem, let me know and I will get in touch with them and fix it as soon as possible. 
 
 ## Application diagram
 
@@ -86,6 +73,22 @@ The profile page and loggout button can be accessed on the top right side of the
 The profile page is created with the data obtained from the OAuth Authentication and saved on the PostgreSQL database. The DB is managed with PRISMA OEM.
 
 ## Database
+
+The Database (DB) used is PostgreSQL and managed with PRISMA ORM.
+
+The Prisma DB schema is located on the schema.prisma inside the Prisma folder, from the application root directory.
+
+To access Prisma Studio tool and visualize the data on the browser, run:
+
+```sh
+npm run prisma studio
+```
+
+After changing the DB schema, it is necessary to update the Database by running:
+
+```sh
+npm run prisma db push
+```
 
 ![Database Diagram](/public/db_diagram.png "Database Diagram")
 
@@ -190,7 +193,7 @@ Regarding HTTPS Headers, the following are active on the website (all pages):
 
 ## Continuous Integration / Continuous Delivery System Analysis
 
-Continuous integration and delivery, also known as CI/CD, is a set of principles and practices used in modern development to merge code from multiple engineers/developers to the principal repository and automatically run builds and tests. Theoretically, it is aligned with the Agile mindset, and the core idea is to make software better and available faster by defining parameterized pipelines that avoid publishing non-working features. 
+Continuous integration and delivery, also known as CI/CD, is a set of principles and practices used in modern development to merge code from multiple engineers/developers to the principal repository and automatically run builds and tests. Theoretically, it is aligned with the Agile mindset, and the core idea is to make software better and available faster by defining parameterized pipelines that avoid publishing non-working features.
 
 On the Family Tree website, we considered the two most effective tools available to implement the desired pipeline, Gitlab and GitHub Actions; we chose the last one since the version control is already made using GitHub. Access to this tool is realized through the Microsoft Visual Studio CODE Editor, whose terminal is the main access point to interact with the CI/CD system, allowing a seamless and fast experience. The task management and assignments are realized on the Linear App.
 
@@ -198,17 +201,17 @@ The initial step in this process is to check Linear to visualize the tasks attri
 
 After, the code creation or editing phase begins with the branch creation, and when it is ready, the content is staged, committed with a clear message, and pushed to the GitHub repository. Small increments on the code base are essential; multiple commits are indicated throughout the day to avoid conflicts with the main branch and fast resource delivery.
 
-On GitHub, a pipeline was created to check the branch automatically. This action is usually configured to be triggered by the "git push" command and has multiple workflows with multiple jobs. 
+On GitHub, a pipeline was created to check the branch automatically. This action is usually configured to be triggered by the "git push" command and has multiple workflows with multiple jobs.
 
-The workflow is a set of actions called "jobs" that aggregates correlated actions. It can be located and edited on the source code from the root folder inside ".github/workflow". 
+The workflow is a set of actions called "jobs" that aggregates correlated actions. It can be located and edited on the source code from the root folder inside ".github/workflow".
 
 The main workflow is located on the "node.js.yml" file. It creates a build using the latest version of Ubuntu and installs Node JS versions 14 and 16 in a matrix strategy, the dependencies indicated on the "package.json" file, and, after, it creates the build. If the build succeeds, the linting process will start, and the testing framework will finally be initialized.
 
-The second workflow is on the file "isStaled.yml". It is triggered on a defined schedule and will set to stale all repository activities without any input for more than 30 days. The activity will be automatically closed if a team member does not remove the stale label or comment. 
+The second workflow is on the file "isStaled.yml". It is triggered on a defined schedule and will set to stale all repository activities without any input for more than 30 days. The activity will be automatically closed if a team member does not remove the stale label or comment.
 
-The third workflow is the "isVulnerable.yml" file. It scans the website for publicly known JavaScript vulnerabilities, so the team can be notified in case any critical update in a dependency is necessary. This activity is used neglected by many software teams, and to have it automated is an essential step to maintain the security standards defined in the Treat Model document. 
+The third workflow is the "isVulnerable.yml" file. It scans the website for publicly known JavaScript vulnerabilities, so the team can be notified in case any critical update in a dependency is necessary. This activity is used neglected by many software teams, and to have it automated is an essential step to maintain the security standards defined in the Treat Model document.
 
-The code will be available for the assigned reviewer if the pipeline actions succeed. At this moment, starts the Code Reviewing phase. 
+The code will be available for the assigned reviewer if the pipeline actions succeed. At this moment, starts the Code Reviewing phase.
 
 The reviewer is responsible for checking the Clean Code principles, the functionality, and the logic created. If something must be changed, it will be marked/commented on, and the responsible engineer will be notified for it to work on the matter.
 
