@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useSession, getSession } from 'next-auth/react';
 import { Table } from '../components/utilities/table';
-import { Link1Icon } from '@radix-ui/react-icons';
+import { CameraIcon } from '@radix-ui/react-icons';
 
 import prisma from '../lib/prisma';
 
@@ -72,31 +72,44 @@ export default function Dashboard({ user }) {
                       </div>
                       <div className='sm:col-span-1'>
                         <dt className='mt-1 text-lg text-blue-900'>Plan</dt>
-                        <dd className='mt-3 text-lg text-gray-900'>USERPLAN</dd>
+                        <dd className='mt-3 text-lg text-gray-900'>
+                          <div>
+                            <select
+                              id='location'
+                              name='location'
+                              className='mt-0 block rounded-md border-blue-300 py-2 pl-3 pr-10 text-base focus:border-blue-700 focus:outline-none focus:ring-blue-500 sm:text-sm'
+                              defaultValue='Family Plan'>
+                              <option>Free</option>
+                              <option>One Member</option>
+                              <option>Family Plan</option>
+                            </select>
+                          </div>
+                        </dd>
                       </div>
                       <div className='sm:col-span-1'>
                         <dt className='mt-1 text-lg text-blue-900'>Phone</dt>
                         <dd className='mt-3 text-lg text-gray-900'>
-                          PHONENUMBER
+                          +55 11 98748 FAKE
                         </dd>
                       </div>
                       <div className='sm:col-span-2 lg:col-span-2'>
                         <dt className='mt-1 text-lg text-blue-900 text-justify'>
                           About
                         </dt>
-                        <dd className='mt-1 text-lg text-gray-900 justify'>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Donec et libero in felis sagittis gravida.
-                          Vestibulum tristique ac dolor at auctor. Pellentesque
-                          habitant morbi tristique senectus et netus et
-                          malesuada fames ac turpis egestas. Suspendisse
-                          fermentum molestie lorem quis fermentum.
+                        <dd className='mt-5 text-lg text-gray-900 justify'>
+                          Hi! I am Jhonathan Campos and I share my text memories
+                          and photos from my life with my closest family
+                          members. I am happy to know that, in the future or
+                          when I pass away, my dearest memories will be
+                          available for my grandson to know more about me and,
+                          hopefully, help him find commom facts and
+                          identification with me.
                         </dd>
                       </div>
                       <div>
                         <button
                           type='button'
-                          className='invisible inline-flex items-center rounded border border-gray-300 bg-white px-2.5 py-1.5 text-xs font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'>
+                          className='inline-flex items-center rounded border border-blue-300 bg-blue px-2.5 py-1.5 text-xs font-medium text-blue-700 shadow-sm hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'>
                           Edit Profile
                         </button>
                       </div>
@@ -119,6 +132,7 @@ export default function Dashboard({ user }) {
                           { id: 'name', label: 'Name' },
                           { id: 'email', label: 'Email' },
                           { id: 'albums', label: 'Albuns' },
+                          { id: 'edit', label: 'Edit' },
                         ]}
                         rows={family.map((family) => ({
                           name: (
@@ -133,20 +147,17 @@ export default function Dashboard({ user }) {
                           email: (
                             <div className='flex items-center'>
                               <div className='ml-4'>
-                                <div className='font-medium text-gray-900'>
+                                <div className='text-lg text-gray-900'>
                                   {family.email}
                                 </div>
                               </div>
                             </div>
                           ),
                           albuns: (
-                            <div className='ml-4 flex-shrink-0'>
-                              {Link1Icon}
-                              <a
-                                href={family.href}
-                                className='font-medium text-blue-600 hover:text-blue-500'>
-                                Available Albuns
-                              </a>
+                            <div className='flex items-center'>
+                              <div className='ml-4'>
+                                <div className=''>{CameraIcon}</div>
+                              </div>
                             </div>
                           ),
                         }))}

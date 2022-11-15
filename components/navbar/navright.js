@@ -7,13 +7,13 @@ export default function Navright() {
   const { data: session } = useSession();
   if (session) {
     return (
-      <>
+      <div className='flex'>
         <Link href='/gallery'>
           <Button variant='primary'>Memories</Button>
         </Link>
         <br />
         <Dropdown />
-      </>
+      </div>
     );
   } else {
     return (
