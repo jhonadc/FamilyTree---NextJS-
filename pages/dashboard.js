@@ -44,7 +44,7 @@ export default function Dashboard({ user }) {
             <div className='space-y-6 lg:col-start-1 lg:col-span-2'>
               <section aria-labelledby='user-profile'>
                 <div className='bg-white shadow sm:rounded-lg'>
-                  <div className='px-4 py-5 sm:px-6 bg-blue-600'>
+                  <div className='px-4 py-5 sm:px-6 bg-gradient-to-r from-blue-400 to-blue-600'>
                     <h2
                       id='user-profile'
                       className='text-xl leading-6 font-medium text-white'>
