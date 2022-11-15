@@ -2,17 +2,19 @@ import React from 'react';
 import Link from 'next/link';
 import { useSession, getSession } from 'next-auth/react';
 import { Table } from '../components/utilities/table';
+import { Link1Icon } from '@radix-ui/react-icons';
 
 import prisma from '../lib/prisma';
 
 const family = [
   { name: 'Agda Lima Lira', email: 'fakeagda@gmail.com', href: '#' },
-  { name: 'Iracema Lira Lima', email: 'fakeiracema@gmail.com', href: '#' },
-];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
+  {
+    name: 'Iracema Lira Lima',
+    email: 'fakeiracema@gmail.com',
+    href: '#',
+  },
+];
 
 export const getServerSideProps = async ({ req, res }) => {
   const session = await getSession({ req });
@@ -40,11 +42,11 @@ export default function Dashboard({ user }) {
         <div>
           <div className='mt-8 max-w-3xl mx-auto grid grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2'>
             <div className='space-y-6 lg:col-start-1 lg:col-span-2'>
-              <section aria-labelledby='applicant-information-title'>
+              <section aria-labelledby='user-profile'>
                 <div className='bg-white shadow sm:rounded-lg'>
                   <div className='px-4 py-5 sm:px-6 bg-blue-600'>
                     <h2
-                      id='applicant-information-title'
+                      id='user-profile'
                       className='text-xl leading-6 font-medium text-white'>
                       Profile
                     </h2>
@@ -55,37 +57,31 @@ export default function Dashboard({ user }) {
                   <div className='border-t border-gray-200 px-4 py-5 sm:px-6'>
                     <dl className='grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2'>
                       <div className='sm:col-span-1'>
-                        <dt className='text-sm font-medium text-gray-500'>
-                          Name
-                        </dt>
-                        <dd className='mt-1 text-sm text-gray-900'>
+                        <dt className='text-lg text-blue-800'>Name</dt>
+                        <dd className='mt-3 text-lg text-gray-900'>
                           {user.name}
                         </dd>
                       </div>
                       <div className='sm:col-span-1'>
-                        <dt className='text-sm font-medium text-gray-500'>
+                        <dt className='mt-1 text-lg text-blue-900'>
                           Email address
                         </dt>
-                        <dd className='mt-1 text-sm text-gray-900'>
+                        <dd className='mt-3 text-lg text-gray-900'>
                           {user.email}
                         </dd>
                       </div>
                       <div className='sm:col-span-1'>
-                        <dt className='text-sm font-medium text-gray-500'>
-                          Plan
-                        </dt>
-                        <dd className='mt-1 text-sm text-gray-900'>USERPLAN</dd>
+                        <dt className='mt-1 text-lg text-blue-900'>Plan</dt>
+                        <dd className='mt-3 text-lg text-gray-900'>USERPLAN</dd>
                       </div>
                       <div className='sm:col-span-1'>
-                        <dt className='text-sm font-medium text-gray-500'>
-                          Phone
-                        </dt>
-                        <dd className='mt-1 text-sm text-gray-900'>
+                        <dt className='mt-1 text-lg text-blue-900'>Phone</dt>
+                        <dd className='mt-3 text-lg text-gray-900'>
                           PHONENUMBER
                         </dd>
                       </div>
                       <div className='sm:col-span-2 lg:col-span-2'>
-                        <dt className='text-sm font-medium text-gray-500 text-justify'>
+                        <dt className='mt-1 text-lg text-blue-900 text-justify'>
                           About
                         </dt>
                         <dd className='mt-1 text-lg text-gray-900 justify'>
@@ -104,50 +100,58 @@ export default function Dashboard({ user }) {
                           Edit Profile
                         </button>
                       </div>
-                      <div className='sm:col-span-2 lg:col-span-2'>
-                        <dt className='text-sm font-medium text-gray-500 mb-5'>
-                          Family Members
-                        </dt>
-                        <dd className='mt-1 text-sm text-gray-900'>
-                          <Table
-                            columns={[
-                              { id: 'name', label: 'Name' },
-                              { id: 'email', label: 'Email' },
-                              { id: 'albums', label: 'Albuns' },
-                            ]}
-                            rows={family.map((family) => ({
-                              name: (
-                                <div className='flex items-center'>
-                                  <div className='ml-4'>
-                                    <div className='font-medium text-gray-900'>
-                                      {family.name}
-                                    </div>
-                                  </div>
-                                </div>
-                              ),
-                              email: (
-                                <div className='flex items-center'>
-                                  <div className='ml-4'>
-                                    <div className='font-medium text-gray-900'>
-                                      {family.email}
-                                    </div>
-                                  </div>
-                                </div>
-                              ),
-                              albuns: (
-                                <div className='ml-4 flex-shrink-0'>
-                                  <a
-                                    href={family.href}
-                                    className='font-medium text-blue-600 hover:text-blue-500'>
-                                    Available Albuns
-                                  </a>
-                                </div>
-                              ),
-                            }))}
-                          />
-                        </dd>
-                      </div>
                     </dl>
+                  </div>
+                  <div className='mt-4 sm:col-span-2 lg:col-span-2'>
+                    <div className='px-4 py-5 sm:px-6 bg-blue-600'>
+                      <h2
+                        id='user-profile'
+                        className='text-xl leading-6 font-medium text-white'>
+                        Family Members
+                      </h2>
+                      <p className='mt-3 max-w-2xl text-lg text-white'>
+                        Edit memories access to family members on your network
+                      </p>
+                    </div>
+                    <dd className='mt-1 text-xl text-blue-900'>
+                      <Table
+                        columns={[
+                          { id: 'name', label: 'Name' },
+                          { id: 'email', label: 'Email' },
+                          { id: 'albums', label: 'Albuns' },
+                        ]}
+                        rows={family.map((family) => ({
+                          name: (
+                            <div className='flex items-center'>
+                              <div className='ml-4'>
+                                <div className='mt-5 text-lg text-gray-900'>
+                                  {family.name}
+                                </div>
+                              </div>
+                            </div>
+                          ),
+                          email: (
+                            <div className='flex items-center'>
+                              <div className='ml-4'>
+                                <div className='font-medium text-gray-900'>
+                                  {family.email}
+                                </div>
+                              </div>
+                            </div>
+                          ),
+                          albuns: (
+                            <div className='ml-4 flex-shrink-0'>
+                              {Link1Icon}
+                              <a
+                                href={family.href}
+                                className='font-medium text-blue-600 hover:text-blue-500'>
+                                Available Albuns
+                              </a>
+                            </div>
+                          ),
+                        }))}
+                      />
+                    </dd>
                   </div>
                 </div>
               </section>

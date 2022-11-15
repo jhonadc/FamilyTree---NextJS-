@@ -124,7 +124,6 @@ When a Session is read, we check if it's expires field indicates an invalid sess
 
 ### Verification Token
 The Verification Token model is used to store tokens for passwordless sign in. "NextAuth.js makes sure that every token is usable only once, and by default has a short (1 day, can be configured by maxAge) lifetime."
-
 ## Security
 
 ### What is threat modeling?  
