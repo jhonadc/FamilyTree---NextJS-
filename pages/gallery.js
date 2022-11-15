@@ -51,24 +51,23 @@ export default function Gallery({
             </h1>
           </div>
 
-          <main>
-            <ul className='mt-10'>
-              ui
+          <main className='grid '>
+            <ul className='mt-10 2xl:mx-10 mx-5 grid justify-items-center 2xl:grid-cols-2'>
               {images.map((image) => {
                 return (
                   <li key={image.id}>
                     <a href={image.link} rel='noreferrer'>
-                      <div className=''>
+                      <div className='2xl:mx-10'>
                         <Image
-                          width={image.width}
-                          height={image.height}
+                          width={1200}
+                          height={900}
                           src={image.image}
                           alt=''
                         />
                       </div>
-                      <h3 className='ml-10 text-sm leading-6 font-medium text-gray-500'>
+                      {/*<h3 className='ml-10 text-sm leading-6 font-medium text-gray-500'>
                         {image.title}
-                      </h3>
+                </h3> */}
 
                       <div className='my-5 w-full border-t border-gray-300' />
                     </a>
