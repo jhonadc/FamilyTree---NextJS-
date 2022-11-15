@@ -2,15 +2,14 @@
 
 ## _Share your memories...for Generations._
 
-
-
 Family Tree allows family members to safely share, via the internet and cloud storage, digitalized memories (photos, texts, small videos) with other family members for generations to come, in a easy to use interface.
 
-# General Information
+## General Information
 
 This is the application diagram.
 
 ![App Diagram](/public/mainpage.png "Application Diagram")
+
 ## Technologies Used
 
 - NEXT JS
@@ -52,7 +51,8 @@ Notice that the NEXTAUTH_URL annd the SERVER_PATH are configured to the port 300
 The page will reload when you make changes.
 
 ### Important info
- From November 28 on, many HEROKU products, including the Heroku PostgreSQL db service, will become paid. Any problem due to this service change cannot be foreseen and, in case you have any problem, let me know and I will get in touch with them and fix it as soon as possible. 
+
+ From November 28 on, many HEROKU products, including the Heroku PostgreSQL db service, will become paid. Any problem due to this service change cannot be foreseen and, in case you have any problem, let me know and I will get in touch with them and fix it as soon as possible.
 
 ## Application diagram
 
@@ -106,7 +106,7 @@ Additional fields are ID (connected to the Session id and Session's userId), ima
 
 ### Album
 
-The album model is used to save an specific user album. It has an title, the content itself, which will be saved on the database as an url string from the Cloudinary service, the date of publishing and the authorId. One user can have many albums. 
+The album model is used to save an specific user album. It has an title, the content itself, which will be saved on the database as an url string from the Cloudinary service, the date of publishing and the authorId. One user can have many albums.
 
 ### Account
 
@@ -123,7 +123,21 @@ A single User can have multiple Sessions, each Session can only have one User.
 When a Session is read, we check if it's expires field indicates an invalid session, and delete it from the database."
 
 ### Verification Token
+
 The Verification Token model is used to store tokens for passwordless sign in. "NextAuth.js makes sure that every token is usable only once, and by default has a short (1 day, can be configured by maxAge) lifetime."
+
+## Testing
+
+The testing framework used is Cypress, which has a robust documentation and user friendly UI.
+
+There are 8 UI related tests implemented and they run automatically on the CI/CD pipeline edited on GitHub Actions.
+
+To run the tests locally, type the followinng command:
+
+```sh
+npm run test
+```
+
 ## Security
 
 ### What is threat modeling?  
@@ -155,7 +169,7 @@ According to the Microsoft Stride Framework and considering that this is an init
 
 - Information Disclosure – Encryption (Vercel); Authorization (Next-Auth).
 
-- Denial of Service – Scalable DDOS protection (Vercel) 
+- Denial of Service – Scalable DDOS protection (Vercel)
 
 - Elevation of Privilege – Authorization (Next-Auth)
 
