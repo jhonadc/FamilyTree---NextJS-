@@ -44,14 +44,14 @@ export default function Gallery({
   if (session) {
     return (
       <>
-        <div className='page'>
+        <div className=''>
           <div className='px-4 py-5 sm:px-6 bg-blue-600'>
             <h1 className='text-xl leading-6 font-medium text-white'>
               Memories Gallery
             </h1>
           </div>
 
-          <main className='grid '>
+          <main className='grid'>
             <ul className='mt-10 2xl:mx-10 mx-5 grid justify-items-center 2xl:grid-cols-2'>
               {images.map((image) => {
                 return (

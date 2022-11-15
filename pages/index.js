@@ -4,8 +4,8 @@ import Image from 'next/image';
 export default function Home() {
   return (
     <>
-      <div className='h-screen relative bg-black'>
-        <div className='h-2/6 mx-auto my-5 py-20  px-6 lg:px-40 text-justify content-center'>
+      <div className='hrelative bg-black'>
+        <div className='mx-auto my-5 py-20  px-6 lg:px-40 text-justify content-center'>
           <h1 className='antialiased font-extrabold tracking-tight text-white text-4xl lg:text-6xl'>
             Share your memories
           </h1>
@@ -25,14 +25,8 @@ export default function Home() {
   </button> */}
         </div>
 
-        <div className='h-3/6 grid grid-cols-1  lg:grid-cols-2 xl:grid-cols-4'>
-          <img className='' src='/main_photo1.png' alt='' />
-
-          <img className='max-xl:invisible' src='/main_photo2.png' alt='' />
-
-          <img className='max-xl:hidden' src='/main_photo3.png' alt='' />
-
-          <img className='' src='/main_photo4.png' alt='' />
+        <div className=''>
+          <img className='' src='/mainpage.png' alt='' />{' '}
         </div>
       </div>
     </>
