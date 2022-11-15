@@ -75,15 +75,15 @@ export default function Gallery({
                 );
               })}
             </ul>
-            <p>
+            <div className='justify-self-center'>
               <button
                 type='button'
-                className='ml-20 mb-20 inline-flex items-center rounded-md border border-transparent bg-blue-600 px-10 py-10 text-2xl font-medium leading-4 text-white shadow-sm hover:bg-blue-700  '
+                className='mb-50 rounded-md bg-blue-600 px-10 py-10 text-2xl font-medium leading-4 text-white shadow-sm hover:bg-blue-700  '
                 onClick={handleLoadMore}>
                 {' '}
                 Load More Results
               </button>
-            </p>
+            </div>
           </main>
         </div>
       </>
