@@ -27,7 +27,7 @@ export default function Footer() {
           ))}
         </nav>
 
-        <p className='mt-8 text-center text-base text-gray-400'>
+        <p className='mt-8 text-sm md:text-lg text-center text-base text-gray-400'>
           &copy; {year} Family Tree, Inc. All rights reserved.
         </p>
       </div>
