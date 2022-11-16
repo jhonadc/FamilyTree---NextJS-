@@ -4,6 +4,7 @@ import { useSession, getSession } from 'next-auth/react';
 import Image from 'next/image';
 import { search, mapImageResources } from '../lib/cloudinary';
 import Link from 'next/link';
+import { ButtonIcon } from '@radix-ui/react-icons';
 
 export default function Gallery({
   images: defaultImages,
@@ -49,6 +50,13 @@ export default function Gallery({
             <h1 className='text-xl leading-6 font-medium text-white'>
               Memories Gallery
             </h1>
+            <Link>
+              <Link href='/upload'>
+                <button className='ml-10  cursor-pointer py-20 text-xl font-extrabold tracking-tight text-white sm:text-3xl lg:text-4xl'>
+                  Click here to enter
+                </button>
+              </Link>
+            </Link>
           </div>
 
           <main className='grid'>

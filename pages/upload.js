@@ -89,8 +89,8 @@ export default function Upload() {
                       </p>
                       <img
                         src={imageSrc}
-                        width={400}
-                        height={300}
+                        width={300}
+                        height={200}
                         alt='memory to upload'
                       />
                       {imageSrc && !uploadData && (
@@ -103,8 +103,10 @@ export default function Upload() {
                         </p>
                       )}
                       {uploadData && (
-                        <div className='px-4 py-5 sm:px-6 bg-gradient-to-l from-blue-400 to-blue-600'>
-                          UPLOAD COMPLETED - GO TO YOUR MEMORIES TO SEE IT
+                        <div className='mt-20 px-4 py-5 sm:px-6 bg-gradient-to-l from-blue-400 to-blue-600'>
+                          <h2 className='lg:text-xl text-sm'>
+                            Done! The photo is available on your Memory page.{' '}
+                          </h2>
                         </div>
                       )}
                     </form>
