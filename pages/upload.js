@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react';
 import Router from 'next/router';
+import { redirect } from 'next/dist/server/api-utils';
 
 export default function Upload() {
   const [imageSrc, setImageSrc] = useState();
@@ -41,7 +42,7 @@ export default function Upload() {
       formData.append('file', file);
     }
 
-    formData.append('upload_preset', 'my-uploads');
+    formData.append('upload_preset', 'FamilyTree');
 
     const data = await fetch(
       'https://api.cloudinary.com/v1_1/dzesz1bgf/image/upload',
@@ -51,7 +52,6 @@ export default function Upload() {
       }
     ).then((r) => r.json());
 
-    setImageSrc(data.secure_url);
     setUploadData(data);
   }
 
