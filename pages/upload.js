@@ -1,59 +1,59 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react';
 import Link from 'next/link';
-
-/**
- * handleOnChange
- * @description Triggers when the file input changes (ex: when a file is selected)
- */
-
-function handleOnChange(changeEvent) {
-  const reader = new FileReader();
-
-  reader.onload = function (onLoadEvent) {
-    setImageSrc(onLoadEvent.target.result);
-    setUploadData(undefined);
-  };
-
-  reader.readAsDataURL(changeEvent.target.files[0]);
-}
-
-/**
- * handleOnSubmit
- * @description Triggers when the main form is submitted
- */
-
-async function handleOnSubmit(event) {
-  event.preventDefault();
-
-  const form = event.currentTarget;
-  const fileInput = Array.from(form.elements).find(
-    ({ name }) => name === 'file'
-  );
-
-  const formData = new FormData();
-
-  for (const file of fileInput.files) {
-    formData.append('file', file);
-  }
-
-  formData.append('upload_preset', 'FamilyTree');
-
-  const data = await fetch(
-    'https://api.cloudinary.com/v1_1/dzesz1bgf/image/upload',
-    {
-      method: 'POST',
-      body: formData,
-    }
-  ).then((r) => r.json());
-
-  setUploadData(data);
-}
+import { useSession } from 'next-auth/react';
 
 export default function Upload() {
+  const { data: session } = useSession();
   const [imageSrc, setImageSrc] = useState();
   const [uploadData, setUploadData] = useState();
-  const { data: session } = useSession();
+
+  /**
+Triggers when the file input changes (ex: when a file is selected)
+ */
+
+  function handleOnChange(changeEvent) {
+    const reader = new FileReader();
+
+    reader.onload = function (onLoadEvent) {
+      setImageSrc(onLoadEvent.target.result);
+      setUploadData(undefined);
+    };
+
+    reader.readAsDataURL(changeEvent.target.files[0]);
+  }
+
+  /**
+Triggers when the main form is submitted
+ */
+
+  async function handleOnSubmit(event) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const fileInput = Array.from(form.elements).find(
+      ({ name }) => name === 'file'
+    );
+
+    const formData = new FormData();
+
+    for (const file of fileInput.files) {
+      formData.append('file', file);
+    }
+
+    formData.append('upload_preset', 'FamilyTree');
+
+    const data = await fetch(
+      'https://api.cloudinary.com/v1_1/dzesz1bgf/image/upload',
+      {
+        method: 'POST',
+        body: formData,
+      }
+    ).then((r) => r.json());
+
+    setUploadData(data);
+  }
+
   if (session) {
     return (
       <>

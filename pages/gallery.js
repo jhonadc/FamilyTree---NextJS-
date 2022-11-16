@@ -53,7 +53,7 @@ export default function Gallery({
             <Link>
               <Link href='/upload'>
                 <button className='ml-10  cursor-pointer py-20 text-xl font-extrabold tracking-tight text-white sm:text-3xl lg:text-4xl'>
-                  Click here to enter
+                  Upload Memories
                 </button>
               </Link>
             </Link>
