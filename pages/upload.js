@@ -1,59 +1,60 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { useSession } from 'next-auth/react';
+import Router from 'next/router';
+import { redirect } from 'next/dist/server/api-utils';
+
+/**
+ * handleOnChange
+ * @description Triggers when the file input changes (ex: when a file is selected)
+ */
+
+function handleOnChange(changeEvent) {
+  const reader = new FileReader();
+
+  reader.onload = function (onLoadEvent) {
+    setImageSrc(onLoadEvent.target.result);
+    setUploadData(undefined);
+  };
+
+  reader.readAsDataURL(changeEvent.target.files[0]);
+}
+
+/**
+ * handleOnSubmit
+ * @description Triggers when the main form is submitted
+ */
+
+async function handleOnSubmit(event) {
+  event.preventDefault();
+
+  const form = event.currentTarget;
+  const fileInput = Array.from(form.elements).find(
+    ({ name }) => name === 'file'
+  );
+
+  const formData = new FormData();
+
+  for (const file of fileInput.files) {
+    formData.append('file', file);
+  }
+
+  formData.append('upload_preset', 'FamilyTree');
+
+  const data = await fetch(
+    'https://api.cloudinary.com/v1_1/dzesz1bgf/image/upload',
+    {
+      method: 'POST',
+      body: formData,
+    }
+  ).then((r) => r.json());
+
+  setUploadData(data);
+}
 
 export default function Upload() {
-  const { data: session } = useSession();
   const [imageSrc, setImageSrc] = useState();
   const [uploadData, setUploadData] = useState();
-
-  /**
-Triggers when the file input changes (ex: when a file is selected)
- */
-
-  function handleOnChange(changeEvent) {
-    const reader = new FileReader();
-
-    reader.onload = function (onLoadEvent) {
-      setImageSrc(onLoadEvent.target.result);
-      setUploadData(undefined);
-    };
-
-    reader.readAsDataURL(changeEvent.target.files[0]);
-  }
-
-  /**
-Triggers when the main form is submitted
- */
-
-  async function handleOnSubmit(event) {
-    event.preventDefault();
-
-    const form = event.currentTarget;
-    const fileInput = Array.from(form.elements).find(
-      ({ name }) => name === 'file'
-    );
-
-    const formData = new FormData();
-
-    for (const file of fileInput.files) {
-      formData.append('file', file);
-    }
-
-    formData.append('upload_preset', 'FamilyTree');
-
-    const data = await fetch(
-      'https://api.cloudinary.com/v1_1/dzesz1bgf/image/upload',
-      {
-        method: 'POST',
-        body: formData,
-      }
-    ).then((r) => r.json());
-
-    setUploadData(data);
-  }
-
+  const { data: session } = useSession();
   if (session) {
     return (
       <>
@@ -74,40 +75,36 @@ Triggers when the main form is submitted
                   </div>
                 </div>
                 <div>
-                  <main className='grid'>
+                  <main className=''>
+                    <h1 className=''>Image Uploader</h1>
+
+                    <p className=''>Upload your memory</p>
+
                     <form
-                      className='mt-10  justify-items-center'
+                      className=''
                       method='post'
                       onChange={handleOnChange}
                       onSubmit={handleOnSubmit}>
                       <p>
-                        <input
-                          className='block w-full min-w-0 flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
-                          type='file'
-                          name='file'
-                        />
+                        <input type='file' name='file' />
                       </p>
                       <img
                         src={imageSrc}
-                        width={300}
-                        height={200}
-                        alt='memory to upload'
+                        width={400}
+                        height={300}
+                        alt='photo to upload'
                       />
                       {imageSrc && !uploadData && (
                         <p>
-                          <button
-                            type='button'
-                            className='ml-5 rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'>
-                            Upload File
-                          </button>
+                          <button>Upload Files</button>
                         </p>
                       )}
                       {uploadData && (
-                        <div className='mt-20 px-4 py-5 sm:px-6 bg-gradient-to-l from-blue-400 to-blue-600'>
-                          <h2 className='lg:text-xl text-sm'>
-                            Done! The photo is available on your Memory page.{' '}
-                          </h2>
-                        </div>
+                        <code>
+                          <pre>
+                            UPLOAD COMPLETED - GO TO YOUR MEMORIES TO SEE IT
+                          </pre>
+                        </code>
                       )}
                     </form>
                   </main>

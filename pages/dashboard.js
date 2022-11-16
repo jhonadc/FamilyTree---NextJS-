@@ -54,6 +54,9 @@ export default function Dashboard({ user }) {
                     <p className='mt-1  text-sm md:text-lg  text-white'>
                       Personal details
                     </p>
+                    <button className='mt-10' href='/upload'>
+                      Upload Memories
+                    </button>
                   </div>
                   <div className='border-t border-gray-200 px-4 py-5 sm:px-6'>
                     <dl className='grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2'>
