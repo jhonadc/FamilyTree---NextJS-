@@ -78,7 +78,7 @@ export default function Upload() {
           )}
           {uploadData && (
             <code>
-              <pre>{JSON.stringify(uploadData, null, 2)}</pre>
+              <pre>UPLOAD COMPLETED - GO TO YOUR MEMORIES TO SEE IT</pre>
             </code>
           )}
         </form>
