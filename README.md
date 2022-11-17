@@ -236,6 +236,22 @@ Although the system demonstrated here involves multiple tools and services (Line
 
 The system described allows the team to work together seamlessly, integrating the Application base code faster, publishing features with confidence, and minimizing errors.
 
+## TROUBLESHOOTING
+
+ERROR LOGGIN IN
+MESSAGE: "try to sign in with a different user"
+
+SOLUTION:
+
+This error connects due to the Heroku PostgreSQL 20 connections limit. To deal with this, Prisma is instantiated on Next JS and exported as a global variable. This variable is, then, imported throughout the app.
+Even so, if the error occurs, run:
+
+```sh
+heroku pg:killall postgresql-clean-41943
+```
+
+This will kill all active connections and allow the user to enter the website.
+
 ## License
 
 This project idea and its code is not open source and are property of Jhonathan Campos.
