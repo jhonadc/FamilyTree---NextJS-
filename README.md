@@ -218,7 +218,7 @@ Regarding HTTPS Headers, the following are active on the website (all pages):
 
 ## Continuous Integration / Continuous Delivery System Analysis
 
-![CI/CD Pipeline Diagram](/public/imgForReadMe/CI_CD_%20diagram.jpeg "CI/CD Pipeline Diagram")
+![CI/CD Pipeline Diagram](/public/imgForReadMe/CI_CD%20pipeline.png "CI/CD Pipeline Diagram")
 
 Continuous integration and delivery, also known as CI/CD, is a set of principles and practices used in modern development to merge code from multiple engineers/developers to the principal repository and automatically run builds and tests. Theoretically, it is aligned with the Agile mindset, and the core idea is to make software better and available faster by defining parameterized pipelines that avoid publishing non-working features.
 
