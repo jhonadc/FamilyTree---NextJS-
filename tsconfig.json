@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx", "pages/albums/[id].tsx"
-, "pages/albums.js", 
+, "pages/archived/albums.js", 
 "pages/api/user/createuser.tsx", 
 "components/utilities/loading.js"
   ],

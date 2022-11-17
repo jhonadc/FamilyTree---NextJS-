@@ -34,7 +34,7 @@ const features = [
       'Family Tree is the place to frace your family history together.',
   },
   {
-    name: 'GENETIC STORATE',
+    name: 'GENETIC STORAGE',
     description:
       'Study and understand your ancestrals biology. The platform will be ready for when such storage is legally and technology available.',
   },

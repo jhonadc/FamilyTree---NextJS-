@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import prisma from '../lib/prisma';
 import { useSession, getSession } from 'next-auth/react';
 import Image from 'next/image';
-import { search, mapImageResources } from '../lib/cloudinary';
 import Link from 'next/link';
-import { ButtonIcon } from '@radix-ui/react-icons';
+import prisma from '../lib/prisma';
+import { search, mapImageResources } from '../lib/cloudinary';
+
+
 
 export default function Gallery({
   images: defaultImages,
@@ -18,8 +19,10 @@ export default function Gallery({
   console.log('nextCursor', nextCursor);
 
   async function handleLoadMore(e) {
-    e.preventDefault(); //avoid whole page from refreshing
+    //avoid whole page from refreshing while fetching
+    e.preventDefault();
 
+    //fetch data from cloudinary
     const results = await fetch('/api/search', {
       method: 'POST',
       body: JSON.stringify({
@@ -32,7 +35,7 @@ export default function Gallery({
 
     const images = mapImageResources(resources);
 
-    //new state for images. old plus new set
+    //new state for images. old plus new set for pagination
     setImages((prev) => {
       return [...prev, ...images];
     });
@@ -47,6 +50,7 @@ export default function Gallery({
       <>
         <div className='mt-8 mx-auto  gap-6 sm:px-6 xl:max-w-7xl '>
           <div className='bg-white shadow sm:rounded-lg'>
+            {/* upper tag */}
             <div className='px-4 py-5 sm:px-6 bg-gradient-to-l from-blue-400 to-blue-600'>
               <h2
                 id='user-profile'
@@ -56,6 +60,7 @@ export default function Gallery({
               <p className='mt-1  text-sm md:text-lg  text-white'>
                 Your memories will carry on.
               </p>{' '}
+              {/* Link to upload files */}
               <Link href='/upload'>
                 <button className='mt-10 border text-white p-2'>
                   Upload Memories
@@ -64,6 +69,7 @@ export default function Gallery({
             </div>
           </div>
 
+          {/* map images for exibition */}
           <main className='mt-10 2xl:mx-10 mx-5 grid justify-items-center 2xl:grid-cols-2'>
             <ul className='mt-10 2xl:mx-10 mx-5 grid justify-items-center 2xl:grid-cols-2'>
               {images.map((image) => {
@@ -78,9 +84,6 @@ export default function Gallery({
                           alt=''
                         />
                       </div>
-                      {/*<h3 className='ml-10 text-sm leading-6 font-medium text-gray-500'>
-                        {image.title}
-                </h3> */}
 
                       <div className='my-5 w-full border-t border-gray-300' />
                     </a>
@@ -88,6 +91,8 @@ export default function Gallery({
                 );
               })}
             </ul>
+
+            {/* pagination */}
             <div className='justify-self-center'>
               <button
                 type='button'
@@ -117,8 +122,9 @@ export default function Gallery({
   }
 }
 
+//check loggen in user for authorization
 export const getServerSideProps = async ({ req, res }) => {
-  //check loggen in user - authorization
+  
   const session = await getSession({ req });
   if (!session) {
     res.statusCode = 403;
