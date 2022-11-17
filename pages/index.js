@@ -1,10 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from 'next/image';
-
 export default function Home() {
   return (
     <>
       <div className='hrelative bg-black'>
+        {/* Upper text with black background*/}
         <div className='mx-auto my-5 py-20  px-6 lg:px-40 text-justify content-center'>
           <h1 className='antialiased font-extrabold tracking-tight text-white text-3xl  lg:text-6xl'>
             Share your memories
@@ -20,11 +19,8 @@ export default function Home() {
             other family members for generations to come, in a easy to use
             interface.
           </p>
-          {/*<button className='mt-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"'>
-            Start
-  </button> */}
         </div>
-
+        {/* Main index image*/}
         <div className='max-lg:hidden'>
           <img className='' src='/mainpage.png' alt='' />{' '}
         </div>

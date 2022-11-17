@@ -1,19 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react';
-import Router from 'next/router';
-import { redirect } from 'next/dist/server/api-utils';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 
-/**
-Triggers when the file input changes (ex: when a file is selected)
- */
 
 export default function Upload() {
   const [imageSrc, setImageSrc] = useState();
   const [uploadData, setUploadData] = useState();
   const { data: session } = useSession();
 
+  //Triggers when the file input changes (ex: when a file is selected)
   function handleOnChange(changeEvent) {
     const reader = new FileReader();
 
@@ -25,14 +21,13 @@ export default function Upload() {
     reader.readAsDataURL(changeEvent.target.files[0]);
   }
 
-  /**
-Triggers when the main form is submitted
- */
-
+  //when the main form is submitted
   async function handleOnSubmit(event) {
+    //avoid page from reloading
     event.preventDefault();
-
     const form = event.currentTarget;
+
+    //make a list of the files selected
     const fileInput = Array.from(form.elements).find(
       ({ name }) => name === 'file'
     );
@@ -42,9 +37,11 @@ Triggers when the main form is submitted
     for (const file of fileInput.files) {
       formData.append('file', file);
     }
-
+    //get data from form and send to the preset defined 
+    //inside Family tree folder in Cloudinary
     formData.append('upload_preset', 'FamilyTree');
 
+    //send the file to Cloudinary
     const data = await fetch(
       'https://api.cloudinary.com/v1_1/dzesz1bgf/image/upload',
       {
@@ -85,6 +82,7 @@ Triggers when the main form is submitted
                       <p className='my-10'>
                         <input type='file' name='file' />
                       </p>
+                      {/* size of the img exibited before upload */}
                       <img
                         src={imageSrc}
                         width={400}
@@ -98,6 +96,7 @@ Triggers when the main form is submitted
                           </button>
                         </p>
                       )}
+                      {/* message after uploading */}
                       {uploadData && (
                         <code>
                           <pre>
