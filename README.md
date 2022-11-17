@@ -54,6 +54,14 @@ The page will reload when you make changes.
 
  From November 28 on, many HEROKU products, including the Heroku PostgreSQL db service, will become paid. Any problem due to this service change cannot be foreseen and, in case you have any problem, let me know and I will get in touch with them and fix it as soon as possible.
 
+ Also, as stated on the Troubleshooting section, if the OAuth login fails with the message "try signing in with a different account", run:
+
+ ```sh
+heroku pg:killall postgresql-clean-41943
+```
+
+This will kill all active connections and allow the user to enter the website.
+
 ## Application diagram
 
 ![App Diagram](/public/diagram.png "Application Diagram")
