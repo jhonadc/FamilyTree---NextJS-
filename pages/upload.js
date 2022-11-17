@@ -9,7 +9,7 @@ export default function Upload() {
   const [uploadData, setUploadData] = useState();
   const { data: session } = useSession();
 
-  //Triggers when the file input changes (ex: when a file is selected)
+  //runs when file input changes (ex: file is selected)
   function handleOnChange(changeEvent) {
     const reader = new FileReader();
 

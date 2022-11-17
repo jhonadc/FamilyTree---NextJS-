@@ -1,4 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
+//archived for now
+
 import React from 'react';
 
 export function Modal(user) {
