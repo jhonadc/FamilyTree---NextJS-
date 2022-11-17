@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { useSession, getSession } from 'next-auth/react';
 import { Table } from '../components/utilities/table';
 import { CameraIcon } from '@radix-ui/react-icons';
-import { Modal } from '../components/utilities/modal';
 
 import prisma from '../lib/prisma';
 
@@ -32,6 +31,33 @@ export const getServerSideProps = async ({ req, res }) => {
   return {
     props: { user },
   };
+
+  const updateUserName = await prisma.user.update({
+    where: {
+      email: user.email,
+    },
+    update: { name: user.name },
+  });
+
+  const upsertUserPhone = await prisma.phone.upsert({
+    where: {
+      email: user.email,
+    },
+    update: {},
+    create: {
+      phone: user.phone,
+    },
+  });
+
+  const upsertUserAbout = await prisma.about.upsert({
+    where: {
+      email: user.email,
+    },
+    update: {},
+    create: {
+      about: user.about,
+    },
+  });
 };
 
 export default function Dashboard({ user }) {
@@ -57,14 +83,38 @@ export default function Dashboard({ user }) {
                   </div>
                   <div className='border-t border-gray-200 px-4 py-5 sm:px-6'>
                     <dl className='grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2'>
-                      <div className='sm:col-span-1'>
-                        <dt className='text-sm md:text-lg  text-blue-800'>
+                      <div>
+                        <label
+                          htmlFor='about'
+                          className='block text-sm md:text-lg font-medium text-gray-700'>
                           Name
-                        </dt>
-                        <dd className='mt-3 text-sm md:text-lg  text-gray-900'>
-                          {user.name}
-                        </dd>
+                        </label>
+                        <form
+                          method='post'
+                          className='mt-5 sm:flex sm:items-center'>
+                          <div className='mt-1'>
+                            <input
+                              type='name'
+                              phone='name'
+                              id='name'
+                              className='border block rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm md:text-lg'
+                              placeholder={user.name}
+                            />
+                          </div>
+
+                          <div>
+                            <button
+                              type='button'
+                              className='md:ml-2  inline-flex items-center rounded border border-blue-300 bg-blue px-2.5 py-1.5 text-xs font-medium text-blue-700 shadow-sm hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
+                              onClick={() => {
+                                upsertUserName;
+                              }}>
+                              Add/Edit
+                            </button>
+                          </div>
+                        </form>
                       </div>
+
                       <div className='sm:col-span-1'>
                         <dt className='mt-1 text-sm md:text-lg  text-blue-900'>
                           Email address
@@ -91,37 +141,69 @@ export default function Dashboard({ user }) {
                           </div>
                         </dd>
                       </div>
-                      <div className='sm:col-span-1'>
-                        <dt className='mt-1 text-sm  md:text-lg  text-blue-900'>
-                          Phone
-                        </dt>
-                        <dd className='mt-3 text-sm  md:text-lg   text-gray-900'>
-                          +55 11 98748 FAKE
-                        </dd>
-                      </div>
-                      <div className='sm:col-span-2 lg:col-span-2'>
-                        <dt className='mt-1 text-sm md:text-lg  text-blue-900 text-justify'>
-                          About
-                        </dt>
-                        <dd className='mt-5 text-sm lg:text-xl md:text-lg  text-gray-900 text-justify'>
-                          Hi! I am Jhonathan Campos and I share my text memories
-                          and photos from my life with my closest family
-                          members. I am happy to know that, in the future or
-                          when I pass away, my dearest memories will be
-                          available for my grandson to know more about me and,
-                          hopefully, help him find commom facts and
-                          identification with me.
-                        </dd>
-                      </div>
+
                       <div>
-                        <button
-                          type='button'
-                          className='inline-flex items-center rounded border border-blue-300 bg-blue px-2.5 py-1.5 text-xs font-medium text-blue-700 shadow-sm hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
-                          onClick={() => {
-                            Modal;
-                          }}>
-                          Edit Profile
-                        </button>
+                        <label
+                          htmlFor='phone'
+                          className='block text-sm md:text-lg font-medium text-gray-700'>
+                          Phone
+                        </label>
+                        <form
+                          method='post'
+                          className='mt-5 sm:flex sm:items-center'>
+                          <div className='mt-1'>
+                            <input
+                              type='phone'
+                              phone='phone'
+                              id='phone'
+                              className='border block rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm md:text-lg'
+                              placeholder={user.phone}
+                            />
+                          </div>
+
+                          <div>
+                            <button
+                              type='button'
+                              className='md:ml-2  inline-flex items-center rounded border border-blue-300 bg-blue px-2.5 py-1.5 text-xs font-medium text-blue-700 shadow-sm hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
+                              onClick={() => {
+                                upsertUserPhone;
+                              }}>
+                              Add/Edit
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+
+                      <div>
+                        <label
+                          htmlFor='about'
+                          className='block text-sm md:text-lg font-medium text-gray-700'>
+                          About
+                        </label>
+                        <form
+                          method='post'
+                          className='mt-5 sm:flex sm:items-center'>
+                          <div className='mt-1'>
+                            <input
+                              type='about'
+                              phone='about'
+                              id='about'
+                              className='border block rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm md:text-lg'
+                              placeholder={user.about}
+                            />
+                          </div>
+
+                          <div>
+                            <button
+                              type='button'
+                              className='md:ml-2  inline-flex items-center rounded border border-blue-300 bg-blue px-2.5 py-1.5 text-xs font-medium text-blue-700 shadow-sm hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
+                              onClick={() => {
+                                upsertUserAbout;
+                              }}>
+                              Add/Edit
+                            </button>
+                          </div>
+                        </form>
                       </div>
                     </dl>
                   </div>
@@ -140,7 +222,7 @@ export default function Dashboard({ user }) {
                       <Table
                         columns={[
                           { id: 'name', label: 'Name' },
-                          { id: 'email', label: 'Email' },
+                          { id: 'phone', label: 'Email' },
                           { id: 'edit', label: 'Edit' },
                         ]}
                         rows={family.map((family) => ({
