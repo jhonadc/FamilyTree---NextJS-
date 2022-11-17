@@ -4,7 +4,10 @@
 
 Family Tree allows family members to safely share, via the internet and cloud storage, digitalized memories (photos, texts, small videos) with other family members for generations to come, in a easy to use interface.
 
-![App Diagram](/public/mainpage.png "Application Diagram")
+![Promotional image](/public/mainpage.png "Promotional Image")
+
+-> Walkthrough of the deployed application on Youtube:
+<https://www.youtube.com/watch?v=29Wjrn5AZX8>
 
 ## Technologies Used
 
@@ -62,7 +65,7 @@ This will kill all active connections and allow the user to enter the website.
 
 ## Application diagram
 
-![App Diagram](/public/diagram.png "Application Diagram")
+![App Diagram](/public/imgForReadMe/diagram.png "Application Diagram")
 
 ## Using the application
 
@@ -96,9 +99,7 @@ After changing the DB schema, it is necessary to update the Database by running:
 npm run prisma db push
 ```
 
-![Database Diagram](/public/db_diagram.png "Database Diagram")
-
-![Next-Auth Database Diagram](/public/nextauth_dbdiagram.png "Next-Auth Database Diagram")
+![Database Diagram](/public/imgForReadMe/db_diagram.png "Database Diagram")
 
 ### User
 
@@ -143,6 +144,9 @@ To run the tests locally, type the followinng command:
 ```sh
 npm run test
 ```
+
+As of 17, November 19:25h, all tests ran sucessfully on GitHub Actions.
+![Test results on GitHub Actions](/public/imgForReadMe/db_diagram.png "Test results on GitHub Actions")
 
 ## Security
 
@@ -210,6 +214,8 @@ Regarding HTTPS Headers, the following are active on the website (all pages):
 - Permissions-Policy
 - X-DNS-Prefetch-Control
 
+![Next-Auth OAuth Database Diagram](/public/imgForReadMe/nextauth_dbdiagram.png "Next-Auth OAuth Database Diagram")
+
 ## Continuous Integration / Continuous Delivery System Analysis
 
 Continuous integration and delivery, also known as CI/CD, is a set of principles and practices used in modern development to merge code from multiple engineers/developers to the principal repository and automatically run builds and tests. Theoretically, it is aligned with the Agile mindset, and the core idea is to make software better and available faster by defining parameterized pipelines that avoid publishing non-working features.
@@ -257,6 +263,9 @@ heroku pg:killall postgresql-clean-41943
 ```
 
 This will kill all active connections and allow the user to enter the website.
+
+Also, this error may occur randomlly and it just emerge recently. Per request of the Prisma ORM team show on the terminal, since all know measures where taken, a report was opened on GitHub Prisma page.
+<https://github.com/prisma/prisma/issues/16334>
 
 ## License
 
