@@ -95,7 +95,7 @@ export default function Dashboard({ user }) {
                           <div className='mt-1'>
                             <input
                               type='name'
-                              phone='name'
+                              name='name'
                               id='name'
                               className='border block rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm md:text-lg'
                               placeholder={user.name}
@@ -154,7 +154,7 @@ export default function Dashboard({ user }) {
                           <div className='mt-1'>
                             <input
                               type='phone'
-                              phone='phone'
+                              name='phone'
                               id='phone'
                               className='border block rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm md:text-lg'
                               placeholder={user.phone}
@@ -186,7 +186,7 @@ export default function Dashboard({ user }) {
                           <div className='mt-1'>
                             <input
                               type='about'
-                              phone='about'
+                              name='about'
                               id='about'
                               className='border block rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm md:text-lg'
                               placeholder={user.about}
