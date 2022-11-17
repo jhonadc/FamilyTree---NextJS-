@@ -54,9 +54,6 @@ export default function Dashboard({ user }) {
                     <p className='mt-1  text-sm md:text-lg  text-white'>
                       Personal details
                     </p>
-                    <button className='mt-10' href='/upload'>
-                      Upload Memories
-                    </button>
                   </div>
                   <div className='border-t border-gray-200 px-4 py-5 sm:px-6'>
                     <dl className='grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2'>
@@ -85,7 +82,7 @@ export default function Dashboard({ user }) {
                             <select
                               id='location'
                               name='location'
-                              className='mt-0 block rounded-md border-blue-300 py-2 pl-3 pr-10 text-base focus:border-blue-700 focus:outline-none focus:ring-blue-500 text-sm lg:text-lg'
+                              className='mt-0 block rounded-md border-blue-300 py-2 pl-3 pr-10 focus:border-blue-700 focus:outline-none focus:ring-blue-500 text-sm lg:text-lg'
                               defaultValue='Family Plan'>
                               <option>Free</option>
                               <option>One Member</option>
@@ -95,10 +92,10 @@ export default function Dashboard({ user }) {
                         </dd>
                       </div>
                       <div className='sm:col-span-1'>
-                        <dt className='mt-1 text-sm md:text-sm md:text-lg  text-blue-900'>
+                        <dt className='mt-1 text-sm  md:text-lg  text-blue-900'>
                           Phone
                         </dt>
-                        <dd className='mt-3 text-sm md:text-sm md:text-lg   text-gray-900'>
+                        <dd className='mt-3 text-sm  md:text-lg   text-gray-900'>
                           +55 11 98748 FAKE
                         </dd>
                       </div>
@@ -186,7 +183,7 @@ export default function Dashboard({ user }) {
   } else {
     return (
       <div className=' py-20 bg-gradient-to-b from-blue-500 to-cyan-600'>
-        <h1 className='ml-10 mb-10  sm:text-lg lg:text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl'>
+        <h1 className='ml-10 mb-10  sm:text-lg lg:text-4xl font-extrabold tracking-tight text-white  '>
           You are not signed in.
         </h1>
         <Link href='api/auth/signin'>

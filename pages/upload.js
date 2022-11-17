@@ -70,23 +70,19 @@ Triggers when the main form is submitted
                       className='text-xl leading-6 font-medium text-white'>
                       Upload Memories
                     </h2>
-                    <p className='mt-1  text-sm md:text-lg  text-white'>
+                    <p className='mt-5 text-sm md:text-lg text-white'>
                       Select a file to be sent to your memories vault.
                     </p>
                   </div>
                 </div>
                 <div>
-                  <main className=''>
-                    <h1 className=''>Image Uploader</h1>
-
-                    <p className=''>Upload your memory</p>
-
+                  <main className='mt-5 ml-20'>
                     <form
                       className=''
                       method='post'
                       onChange={handleOnChange}
                       onSubmit={handleOnSubmit}>
-                      <p>
+                      <p className='my-10'>
                         <input type='file' name='file' />
                       </p>
                       <img
@@ -97,7 +93,9 @@ Triggers when the main form is submitted
                       />
                       {imageSrc && !uploadData && (
                         <p>
-                          <button>Upload Files</button>
+                          <button className='mt-10 px-20 border rouded bg-blue-700 border-sky-700 text-white p-2'>
+                            Upload File
+                          </button>
                         </p>
                       )}
                       {uploadData && (
@@ -119,7 +117,7 @@ Triggers when the main form is submitted
   } else {
     return (
       <div className=' py-20 bg-gradient-to-b from-blue-500 to-cyan-600'>
-        <h1 className='ml-10 mb-10  sm:text-lg lg:text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl'>
+        <h1 className='ml-10 mb-10  sm:text-lg lg:text-4xl font-extrabold tracking-tight text-white'>
           You are not signed in.
         </h1>
         <Link href='api/auth/signin'>

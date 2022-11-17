@@ -45,20 +45,26 @@ export default function Gallery({
   if (session) {
     return (
       <>
-        <div className=''>
-          <div className='px-4 py-5 sm:px-6 bg-blue-600'>
-            <h1 className='text-xl leading-6 font-medium text-white'>
-              Memories Gallery
-            </h1>
-
-            <Link href='/upload'>
-              <button className='cursor-pointer bg-white-500  text-blue-700 font-bold py-2 px-4 rounded"'>
-                Upload Memories
-              </button>
-            </Link>
+        <div className='mt-8 mx-auto  gap-6 sm:px-6 xl:max-w-7xl '>
+          <div className='bg-white shadow sm:rounded-lg'>
+            <div className='px-4 py-5 sm:px-6 bg-gradient-to-l from-blue-400 to-blue-600'>
+              <h2
+                id='user-profile'
+                className='text-xl leading-6 font-medium text-white'>
+                Memories Gallery
+              </h2>
+              <p className='mt-1  text-sm md:text-lg  text-white'>
+                Your memories will carry on.
+              </p>{' '}
+              <Link href='/upload'>
+                <button className='mt-10 border text-white p-2'>
+                  Upload Memories
+                </button>
+              </Link>
+            </div>
           </div>
 
-          <main className='grid'>
+          <main className='mt-10 2xl:mx-10 mx-5 grid justify-items-center 2xl:grid-cols-2'>
             <ul className='mt-10 2xl:mx-10 mx-5 grid justify-items-center 2xl:grid-cols-2'>
               {images.map((image) => {
                 return (

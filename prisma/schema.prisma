@@ -15,7 +15,7 @@ model Album {
   published Boolean @default(false)
   authorId  String?
   author    User?   @relation(fields: [authorId], references: [id])
-  //images    Image[]
+  images    Image?
 }
 
 model Image {
@@ -23,7 +23,7 @@ model Image {
   publicId String @unique
   format   String
   version  String
-  //album    Album  @relation(fields: [id], references: [id], onDelete: Cascade)
+  album    Album  @relation(fields: [id], references: [id])
 }
 
 model Account {
@@ -59,6 +59,8 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  about         String?
+  phone         Int?
   accounts      Account[]
   albums        Album[]
   sessions      Session[]
