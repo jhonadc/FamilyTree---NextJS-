@@ -4,10 +4,6 @@
 
 Family Tree allows family members to safely share, via the internet and cloud storage, digitalized memories (photos, texts, small videos) with other family members for generations to come, in a easy to use interface.
 
-## General Information
-
-This is the application diagram.
-
 ![App Diagram](/public/mainpage.png "Application Diagram")
 
 ## Technologies Used
