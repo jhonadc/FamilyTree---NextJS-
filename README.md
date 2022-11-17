@@ -218,6 +218,8 @@ Regarding HTTPS Headers, the following are active on the website (all pages):
 
 ## Continuous Integration / Continuous Delivery System Analysis
 
+![CI/CD Pipeline Diagram](/public/imgForReadMe/CI_CD_%20diagram.jpeg "CI/CD Pipeline Diagram")
+
 Continuous integration and delivery, also known as CI/CD, is a set of principles and practices used in modern development to merge code from multiple engineers/developers to the principal repository and automatically run builds and tests. Theoretically, it is aligned with the Agile mindset, and the core idea is to make software better and available faster by defining parameterized pipelines that avoid publishing non-working features.
 
 On the Family Tree website, we considered the two most effective tools available to implement the desired pipeline, Gitlab and GitHub Actions; we chose the last one since the version control is already made using GitHub. Access to this tool is realized through the Microsoft Visual Studio CODE Editor, whose terminal is the main access point to interact with the CI/CD system, allowing a seamless and fast experience. The task management and assignments are realized on the Linear App.
