@@ -52,15 +52,17 @@ The page will reload when you make changes.
 
 ### Important info
 
- From November 28 on, many HEROKU products, including the Heroku PostgreSQL db service, will become paid. Any problem due to this service change cannot be foreseen and, in case you have any problem, let me know and I will get in touch with them and fix it as soon as possible.
+ 1) From November 28 on, many HEROKU products, including the Heroku PostgreSQL db service, will become paid. Any problem due to this service change cannot be foreseen and, in case you have any problem, let me know and I will get in touch with them and fix it as soon as possible.
 
- Also, as stated on the Troubleshooting section, if the OAuth login fails with the message "try signing in with a different account", run:
+ 2) If the OAuth login fails with the message "try signing in with a different account", run:
 
  ```sh
 heroku pg:killall postgresql-clean-41943
 ```
 
 This will kill all active connections and allow the user to enter the website.
+
+3) Due to last minute add, some fields on the profile page are not fully editable (lacks button to db connection). The UI, DB and Prisma Schema are ready, though. To test the connection between the editable forms with and the DB, one can run ```sh run npx prisma studio```. Access the studio link provided on the terminal and click on the User table. Click over the available user row (you) and add the About field text. Click outside the row to keep the text and the green button "Save" will be enabled. Do the same with the Phone or Name. After, click the mentioned Save button. The profile page will have its data updated accordingly.  
 
 ## Application diagram
 
