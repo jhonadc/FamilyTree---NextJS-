@@ -146,7 +146,7 @@ npm run test
 ```
 
 As of 17, November 19:25h, all tests ran sucessfully on GitHub Actions.
-![Test results on GitHub Actions](/public/imgForReadMe/db_diagram.png "Test results on GitHub Actions")
+![Test results on GitHub Actions](/public/imgForReadMe/testsOK.png "Test results on GitHub Actions")
 
 ## Security
 
