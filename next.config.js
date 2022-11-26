@@ -36,7 +36,6 @@ module.exports = {
     webpack5: true,
   },
   reactStrictMode: true,
-  swcMinify: true,
   images: {
     domains: ['res.cloudinary.com'],
   },
