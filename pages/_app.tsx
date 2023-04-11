@@ -9,8 +9,7 @@ export default function App({
   pageProps: { session, ...pageProps },
 }) {
   return (
-    <SessionProvider session={pageProps.session}>
-      <Head>
+          <Head>
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q91LKR3HT0"></script>
         <script>
@@ -21,6 +20,7 @@ export default function App({
           gtag('config', 'G-Q91LKR3HT0');
         </script>
       </Head>
+    <SessionProvider session={pageProps.session}>
       <Layout>
         <Component {...pageProps} />
       </Layout>
