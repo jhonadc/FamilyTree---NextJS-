@@ -3,8 +3,58 @@ import 'tailwindcss/tailwind.css';
 import Layout from '../components/layout';
 import { SessionProvider } from 'next-auth/react';
 import Head from 'next/head';
+import Script from 'next/script';
+import * as gtag from "../lib/gtag";
+import { useRouter } from 'next/router';
+import { useEffect } from "react";
 
-export default function App({
+function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+    gtag.pageview(url);
+    };
+
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+      };
+  }, [router.events]);
+
+ {
+  return (
+    <>
+      <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXX"></Script>
+      <Script
+        id='google-analytics'
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+        __html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXX', {
+        page_path: window.location.pathname,
+        });
+        `,
+        }}
+      />
+      <SessionProvider session={pageProps.session}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </SessionProvider>
+    </>
+      );
+}
+}
+
+export default App
+//changed to class based component and some code regarding session was removed.
+//check below
+
+/*export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }) {
@@ -28,3 +78,4 @@ export default function App({
     </SessionProvider>
   );
 }
+*/
