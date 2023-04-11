@@ -2,11 +2,8 @@ import '../styles/globals.css';
 import 'tailwindcss/tailwind.css';
 import Layout from '../components/layout';
 import { SessionProvider } from 'next-auth/react';
-import Head from 'next/head';
 import Script from 'next/script';
-import * as gtag from "../lib/gtag";
-import { useRouter } from 'next/router';
-import { useEffect } from "react";
+import { GoogleAnalytics } from "nextjs-google-analytics";
 
 
 export default function App({
@@ -14,10 +11,13 @@ export default function App({
   pageProps: { session, ...pageProps },
 }) {
   return (
+    <>
+    <GoogleAnalytics trackPageViews />
     <SessionProvider session={pageProps.session}>
       <Layout>
         <Component {...pageProps} />
       </Layout>
     </SessionProvider>
+    </>
   );
 }
